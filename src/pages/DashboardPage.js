@@ -64,8 +64,8 @@ class DashboardPage extends React.Component {
     return (
       <Page
         className="DashboardPage"
-        title="Dashboard"
-        breadcrumbs={[{ name: 'Dashboard', active: true }]}
+        title="Home"
+        breadcrumbs={[{ name: 'Home', active: true }]}
       >
         <Row>
           <Col lg={3} md={6} sm={6} xs={12}>
@@ -348,14 +348,30 @@ class DashboardPage extends React.Component {
         </Row>
 
         <CardDeck style={{ marginBottom: '1rem' }}>
-          <Card body style={{ overflowX: 'auto','paddingBottom':'15px','height': 'fit-content','paddingTop': 'inherit'}}>
+          <Card
+            body
+            style={{
+              overflowX: 'auto',
+              paddingBottom: '15px',
+              height: 'fit-content',
+              paddingTop: 'inherit',
+            }}
+          >
             <HorizontalAvatarList
               avatars={avatarsData}
               avatarProps={{ size: 50 }}
             />
           </Card>
 
-          <Card body style={{ overflowX: 'auto','paddingBottom':'15px','height': 'fit-content','paddingTop': 'inherit'}}>
+          <Card
+            body
+            style={{
+              overflowX: 'auto',
+              paddingBottom: '15px',
+              height: 'fit-content',
+              paddingTop: 'inherit',
+            }}
+          >
             <HorizontalAvatarList
               avatars={avatarsData}
               avatarProps={{ size: 50 }}

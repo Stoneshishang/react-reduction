@@ -17,7 +17,10 @@ import {
 
 const FormPage = () => {
   return (
-    <Page title="Forms" breadcrumbs={[{ name: 'Forms', active: true }]}>
+    <Page
+      title="Fleet Data Assembly"
+      breadcrumbs={[{ name: 'Forms', active: true }]}
+    >
       <Row>
         <Col xl={6} lg={12} md={12}>
           <Card>

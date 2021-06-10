@@ -43,31 +43,76 @@ const sidebarBackground = {
   backgroundRepeat: 'no-repeat',
 };
 
-const navComponents = [
-  { to: '/buttons', name: 'buttons', exact: false, Icon: MdRadioButtonChecked },
+const FleetDataAssembly = [
   {
-    to: '/button-groups',
-    name: 'button groups',
+    to: '/EnterFleetInfo',
+    name: 'Enter Fleet Info',
     exact: false,
-    Icon: MdGroupWork,
+    Icon: MdChromeReaderMode,
   },
-  { to: '/forms', name: 'forms', exact: false, Icon: MdChromeReaderMode },
-  { to: '/input-groups', name: 'input groups', exact: false, Icon: MdViewList },
   {
-    to: '/dropdowns',
-    name: 'dropdowns',
+    to: '/DefineColumns',
+    name: 'Define Columns',
     exact: false,
-    Icon: MdArrowDropDownCircle,
+    Icon: MdChromeReaderMode,
   },
-  { to: '/badges', name: 'badges', exact: false, Icon: MdStar },
-  { to: '/alerts', name: 'alerts', exact: false, Icon: MdNotificationsActive },
-  { to: '/progress', name: 'progress', exact: false, Icon: MdBrush },
-  { to: '/modals', name: 'modals', exact: false, Icon: MdViewDay },
+  {
+    to: '/DecodedVINs',
+    name: 'Decoded VINs',
+    exact: false,
+    Icon: MdChromeReaderMode,
+  },
 ];
 
-const navContents = [
-  { to: '/typography', name: 'typography', exact: false, Icon: MdTextFields },
-  { to: '/tables', name: 'tables', exact: false, Icon: MdBorderAll },
+const SustainabilityEvalution = [
+  {
+    to: '/SelectBestEPAMatches',
+    name: 'Select Best EPA Matches',
+    exact: false,
+    Icon: MdTextFields,
+  },
+  {
+    to: '/ReviewEPAVehiclesFootprint',
+    name: 'Review EPA Vehicles Footprint',
+    exact: false,
+    Icon: MdBorderAll,
+  },
+];
+
+const PurchaseRecommendation = [
+  {
+    to: '/SelectSaleVehiclesForPurchase',
+    name: 'Select Sale Vehicles For Purchase',
+    exact: false,
+    Icon: MdTextFields,
+  },
+  {
+    to: '/SelectDefaultCandidateReplacement',
+    name: 'Select Default Candidate Replacement',
+    exact: false,
+    Icon: MdBorderAll,
+  },
+  {
+    to: '/UpdateFinanicalInfoAndSetBonds',
+    name: 'Update Finanical Info And Set Bonds',
+    exact: false,
+    Icon: MdBorderAll,
+  },
+];
+
+const OptimizationVisualization = [
+  {
+    to: '/OptimizationVisualization',
+    name: 'Optimization Visualization',
+    exact: false,
+    Icon: MdTextFields,
+  },
+  {
+    to: '/OptimizationResults',
+    name: 'Optimization Results',
+    exact: false,
+    Icon: MdBorderAll,
+  },
 ];
 
 const pageContents = [
@@ -80,20 +125,17 @@ const pageContents = [
   },
 ];
 
-const navItems = [
-  { to: '/', name: 'dashboard', exact: true, Icon: MdDashboard },
-  { to: '/cards', name: 'cards', exact: false, Icon: MdWeb },
-  { to: '/charts', name: 'charts', exact: false, Icon: MdInsertChart },
-  { to: '/widgets', name: 'widgets', exact: false, Icon: MdWidgets },
-];
+const navItems = [{ to: '/', name: 'home', exact: false, Icon: MdWeb }];
 
 const bem = bn.create('sidebar');
 
 class Sidebar extends React.Component {
   state = {
-    isOpenComponents: true,
-    isOpenContents: true,
-    isOpenPages: true,
+    isOpenAssemblies: false,
+    isOpenEvaluations: false,
+    isOpenPages: false,
+    isOpenPurchases: false,
+    isOpenOptimizations: false,
   };
 
   handleClick = name => () => {
@@ -113,15 +155,8 @@ class Sidebar extends React.Component {
         <div className={bem.e('content')}>
           <Navbar>
             <SourceLink className="navbar-brand d-flex">
-              <img
-                src={logo200Image}
-                width="40"
-                height="30"
-                className="pr-2"
-                alt=""
-              />
               <span className="text-white">
-                Reduction <FaGithub />
+                Sustainable Fleet Purchase Planner
               </span>
             </SourceLink>
           </Navbar>
@@ -144,18 +179,18 @@ class Sidebar extends React.Component {
 
             <NavItem
               className={bem.e('nav-item')}
-              onClick={this.handleClick('Components')}
+              onClick={this.handleClick('Assemblies')}
             >
               <BSNavLink className={bem.e('nav-item-collapse')}>
                 <div className="d-flex">
                   <MdExtension className={bem.e('nav-item-icon')} />
-                  <span className=" align-self-start">Components</span>
+                  <span className=" align-self-start">Fleet Data Assembly</span>
                 </div>
                 <MdKeyboardArrowDown
                   className={bem.e('nav-item-icon')}
                   style={{
                     padding: 0,
-                    transform: this.state.isOpenComponents
+                    transform: this.state.isOpenAssemblies
                       ? 'rotate(0deg)'
                       : 'rotate(-90deg)',
                     transitionDuration: '0.3s',
@@ -164,8 +199,8 @@ class Sidebar extends React.Component {
                 />
               </BSNavLink>
             </NavItem>
-            <Collapse isOpen={this.state.isOpenComponents}>
-              {navComponents.map(({ to, name, exact, Icon }, index) => (
+            <Collapse isOpen={this.state.isOpenAssemblies}>
+              {FleetDataAssembly.map(({ to, name, exact, Icon }, index) => (
                 <NavItem key={index} className={bem.e('nav-item')}>
                   <BSNavLink
                     id={`navItem-${name}-${index}`}
@@ -184,18 +219,20 @@ class Sidebar extends React.Component {
 
             <NavItem
               className={bem.e('nav-item')}
-              onClick={this.handleClick('Contents')}
+              onClick={this.handleClick('Evaluations')}
             >
               <BSNavLink className={bem.e('nav-item-collapse')}>
                 <div className="d-flex">
-                  <MdSend className={bem.e('nav-item-icon')} />
-                  <span className="">Contents</span>
+                  <MdExtension className={bem.e('nav-item-icon')} />
+                  <span className=" align-self-start">
+                    Sustainability Evalution
+                  </span>
                 </div>
                 <MdKeyboardArrowDown
                   className={bem.e('nav-item-icon')}
                   style={{
                     padding: 0,
-                    transform: this.state.isOpenContents
+                    transform: this.state.isOpenEvaluations
                       ? 'rotate(0deg)'
                       : 'rotate(-90deg)',
                     transitionDuration: '0.3s',
@@ -204,22 +241,110 @@ class Sidebar extends React.Component {
                 />
               </BSNavLink>
             </NavItem>
-            <Collapse isOpen={this.state.isOpenContents}>
-              {navContents.map(({ to, name, exact, Icon }, index) => (
-                <NavItem key={index} className={bem.e('nav-item')}>
-                  <BSNavLink
-                    id={`navItem-${name}-${index}`}
-                    className="text-uppercase"
-                    tag={NavLink}
-                    to={to}
-                    activeClassName="active"
-                    exact={exact}
-                  >
-                    <Icon className={bem.e('nav-item-icon')} />
-                    <span className="">{name}</span>
-                  </BSNavLink>
-                </NavItem>
-              ))}
+            <Collapse isOpen={this.state.isOpenEvaluations}>
+              {SustainabilityEvalution.map(
+                ({ to, name, exact, Icon }, index) => (
+                  <NavItem key={index} className={bem.e('nav-item')}>
+                    <BSNavLink
+                      id={`navItem-${name}-${index}`}
+                      className="text-uppercase"
+                      tag={NavLink}
+                      to={to}
+                      activeClassName="active"
+                      exact={exact}
+                    >
+                      <Icon className={bem.e('nav-item-icon')} />
+                      <span className="">{name}</span>
+                    </BSNavLink>
+                  </NavItem>
+                ),
+              )}
+            </Collapse>
+
+            <NavItem
+              className={bem.e('nav-item')}
+              onClick={this.handleClick('Purchases')}
+            >
+              <BSNavLink className={bem.e('nav-item-collapse')}>
+                <div className="d-flex">
+                  <MdSend className={bem.e('nav-item-icon')} />
+                  <span className="">Purchase Recommendation</span>
+                </div>
+                <MdKeyboardArrowDown
+                  className={bem.e('nav-item-icon')}
+                  style={{
+                    padding: 0,
+                    transform: this.state.isOpenPurchases
+                      ? 'rotate(0deg)'
+                      : 'rotate(-90deg)',
+                    transitionDuration: '0.3s',
+                    transitionProperty: 'transform',
+                  }}
+                />
+              </BSNavLink>
+            </NavItem>
+            <Collapse isOpen={this.state.isOpenPurchases}>
+              {PurchaseRecommendation.map(
+                ({ to, name, exact, Icon }, index) => (
+                  <NavItem key={index} className={bem.e('nav-item')}>
+                    <BSNavLink
+                      id={`navItem-${name}-${index}`}
+                      className="text-uppercase"
+                      tag={NavLink}
+                      to={to}
+                      activeClassName="active"
+                      exact={exact}
+                    >
+                      <Icon className={bem.e('nav-item-icon')} />
+                      <span className="">{name}</span>
+                    </BSNavLink>
+                  </NavItem>
+                ),
+              )}
+            </Collapse>
+
+            <NavItem
+              className={bem.e('nav-item')}
+              onClick={this.handleClick('Optimizations')}
+            >
+              <BSNavLink className={bem.e('nav-item-collapse')}>
+                <div className="d-flex">
+                  <MdExtension className={bem.e('nav-item-icon')} />
+                  <span className=" align-self-start">
+                    Optimization Visualization
+                  </span>
+                </div>
+                <MdKeyboardArrowDown
+                  className={bem.e('nav-item-icon')}
+                  style={{
+                    padding: 0,
+                    transform: this.state.isOpenOptimizations
+                      ? 'rotate(0deg)'
+                      : 'rotate(-90deg)',
+                    transitionDuration: '0.3s',
+                    transitionProperty: 'transform',
+                  }}
+                />
+              </BSNavLink>
+            </NavItem>
+            <Collapse isOpen={this.state.isOpenOptimizations}>
+              {OptimizationVisualization.map(
+                ({ to, name, exact, Icon }, index) => (
+                  <NavItem key={index} className={bem.e('nav-item')}>
+                    <BSNavLink
+                      id={`navItem-${name}-${index}`}
+                      className="text-uppercase"
+                      tag={NavLink}
+                      to={to}
+                      activeClassName="active"
+                      exact={exact}
+                    >
+                      <Icon className={bem.e('nav-item-icon')} />
+                      <span className="">{name}</span>
+                    </BSNavLink>
+                  </NavItem>
+                ),
+              )}
             </Collapse>
 
             <NavItem
