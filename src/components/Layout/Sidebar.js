@@ -4,8 +4,12 @@ import SourceLink from 'components/SourceLink';
 import React from 'react';
 import { FaGithub } from 'react-icons/fa';
 import {
+  MdHome,
+  MdRateReview,
   MdAccountCircle,
+  MdShoppingCart,
   MdArrowDropDownCircle,
+  MdCheckBox,
   MdBorderAll,
   MdBrush,
   MdChromeReaderMode,
@@ -26,6 +30,8 @@ import {
   MdWeb,
   MdWidgets,
 } from 'react-icons/md';
+
+
 import { NavLink } from 'react-router-dom';
 import {
   // UncontrolledTooltip,
@@ -69,13 +75,13 @@ const SustainabilityEvalution = [
     to: '/SelectBestEPAMatches',
     name: 'Select Best EPA Matches',
     exact: false,
-    Icon: MdTextFields,
+    Icon: MdCheckBox,
   },
   {
     to: '/ReviewEPAVehiclesFootprint',
     name: 'Review EPA Vehicles Footprint',
     exact: false,
-    Icon: MdBorderAll,
+    Icon: MdRateReview,
   },
 ];
 
@@ -84,19 +90,19 @@ const PurchaseRecommendation = [
     to: '/SelectSaleVehiclesForPurchase',
     name: 'Select Sale Vehicles For Purchase',
     exact: false,
-    Icon: MdTextFields,
+    Icon: MdCheckBox,
   },
   {
     to: '/SelectDefaultCandidateReplacement',
     name: 'Select Default Candidate Replacement',
     exact: false,
-    Icon: MdBorderAll,
+    Icon: MdCheckBox,
   },
   {
     to: '/UpdateFinanicalInfoAndSetBonds',
     name: 'Update Finanical Info And Set Bonds',
     exact: false,
-    Icon: MdBorderAll,
+    Icon: MdRateReview,
   },
 ];
 
@@ -105,13 +111,13 @@ const OptimizationVisualization = [
     to: '/OptimizationVisualization',
     name: 'Optimization Visualization',
     exact: false,
-    Icon: MdTextFields,
+    Icon: MdInsertChart,
   },
   {
     to: '/OptimizationResults',
     name: 'Optimization Results',
     exact: false,
-    Icon: MdBorderAll,
+    Icon: MdInsertChart,
   },
 ];
 
@@ -125,7 +131,7 @@ const pageContents = [
   },
 ];
 
-const navItems = [{ to: '/', name: 'home', exact: false, Icon: MdWeb }];
+const navItems = [{ to: '/', name: 'home', exact: true, Icon: MdHome}];
 
 const bem = bn.create('sidebar');
 
@@ -154,12 +160,13 @@ class Sidebar extends React.Component {
         <div className={bem.e('background')} style={sidebarBackground} />
         <div className={bem.e('content')}>
           <Navbar>
-            <SourceLink className="navbar-brand d-flex">
-              <span className="text-white">
+            <SourceLink >
+              <span className="text-white" style={{fontSize: '1.4rem'}}>
                 Sustainable Fleet Purchase Planner
               </span>
             </SourceLink>
           </Navbar>
+
           <Nav vertical>
             {navItems.map(({ to, name, exact, Icon }, index) => (
               <NavItem key={index} className={bem.e('nav-item')}>
@@ -183,8 +190,8 @@ class Sidebar extends React.Component {
             >
               <BSNavLink className={bem.e('nav-item-collapse')}>
                 <div className="d-flex">
-                  <MdExtension className={bem.e('nav-item-icon')} />
-                  <span className=" align-self-start">Fleet Data Assembly</span>
+                  <MdExtension className={bem.e('nav-item-icon') }/>
+                  <span className=" align-self-start text-uppercase">Fleet Data Assembly</span>
                 </div>
                 <MdKeyboardArrowDown
                   className={bem.e('nav-item-icon')}
@@ -204,13 +211,12 @@ class Sidebar extends React.Component {
                 <NavItem key={index} className={bem.e('nav-item')}>
                   <BSNavLink
                     id={`navItem-${name}-${index}`}
-                    className="text-uppercase"
                     tag={NavLink}
                     to={to}
                     activeClassName="active"
                     exact={exact}
                   >
-                    <Icon className={bem.e('nav-item-icon')} />
+                    <Icon className={bem.e('nav-item-icon')} style={{marginLeft: '20px'}}/>
                     <span className="">{name}</span>
                   </BSNavLink>
                 </NavItem>
@@ -223,8 +229,8 @@ class Sidebar extends React.Component {
             >
               <BSNavLink className={bem.e('nav-item-collapse')}>
                 <div className="d-flex">
-                  <MdExtension className={bem.e('nav-item-icon')} />
-                  <span className=" align-self-start">
+                  <MdRateReview className={bem.e('nav-item-icon')} />
+                  <span className="align-self-start text-uppercase">
                     Sustainability Evalution
                   </span>
                 </div>
@@ -247,13 +253,12 @@ class Sidebar extends React.Component {
                   <NavItem key={index} className={bem.e('nav-item')}>
                     <BSNavLink
                       id={`navItem-${name}-${index}`}
-                      className="text-uppercase"
                       tag={NavLink}
                       to={to}
                       activeClassName="active"
                       exact={exact}
                     >
-                      <Icon className={bem.e('nav-item-icon')} />
+                      <Icon className={bem.e('nav-item-icon')} style={{marginLeft: '20px'}} />
                       <span className="">{name}</span>
                     </BSNavLink>
                   </NavItem>
@@ -267,8 +272,8 @@ class Sidebar extends React.Component {
             >
               <BSNavLink className={bem.e('nav-item-collapse')}>
                 <div className="d-flex">
-                  <MdSend className={bem.e('nav-item-icon')} />
-                  <span className="">Purchase Recommendation</span>
+                  <MdShoppingCart className={bem.e('nav-item-icon')} />
+                  <span className="align-self-start text-uppercase">Purchase Recommendation</span>
                 </div>
                 <MdKeyboardArrowDown
                   className={bem.e('nav-item-icon')}
@@ -289,13 +294,12 @@ class Sidebar extends React.Component {
                   <NavItem key={index} className={bem.e('nav-item')}>
                     <BSNavLink
                       id={`navItem-${name}-${index}`}
-                      className="text-uppercase"
                       tag={NavLink}
                       to={to}
                       activeClassName="active"
                       exact={exact}
                     >
-                      <Icon className={bem.e('nav-item-icon')} />
+                      <Icon className={bem.e('nav-item-icon')} style={{marginLeft: '20px'}}/>
                       <span className="">{name}</span>
                     </BSNavLink>
                   </NavItem>
@@ -309,8 +313,8 @@ class Sidebar extends React.Component {
             >
               <BSNavLink className={bem.e('nav-item-collapse')}>
                 <div className="d-flex">
-                  <MdExtension className={bem.e('nav-item-icon')} />
-                  <span className=" align-self-start">
+                  <MdInsertChart className={bem.e('nav-item-icon')} size={30}/>
+                  <span className="align-self-start text-uppercase">
                     Optimization Visualization
                   </span>
                 </div>
@@ -332,14 +336,13 @@ class Sidebar extends React.Component {
                 ({ to, name, exact, Icon }, index) => (
                   <NavItem key={index} className={bem.e('nav-item')}>
                     <BSNavLink
-                      id={`navItem-${name}-${index}`}
-                      className="text-uppercase"
+                      id={`navItem-${name}-${index}`}     
                       tag={NavLink}
                       to={to}
                       activeClassName="active"
                       exact={exact}
                     >
-                      <Icon className={bem.e('nav-item-icon')} />
+                      <Icon className={bem.e('nav-item-icon')} style={{marginLeft: '20px'}}/>
                       <span className="">{name}</span>
                     </BSNavLink>
                   </NavItem>
@@ -354,7 +357,7 @@ class Sidebar extends React.Component {
               <BSNavLink className={bem.e('nav-item-collapse')}>
                 <div className="d-flex">
                   <MdPages className={bem.e('nav-item-icon')} />
-                  <span className="">Pages</span>
+                  <span className="align-self-start text-uppercase">Pages</span>
                 </div>
                 <MdKeyboardArrowDown
                   className={bem.e('nav-item-icon')}
@@ -374,13 +377,12 @@ class Sidebar extends React.Component {
                 <NavItem key={index} className={bem.e('nav-item')}>
                   <BSNavLink
                     id={`navItem-${name}-${index}`}
-                    className="text-uppercase"
                     tag={NavLink}
                     to={to}
                     activeClassName="active"
                     exact={exact}
                   >
-                    <Icon className={bem.e('nav-item-icon')} />
+                    <Icon className={bem.e('nav-item-icon')} style={{marginLeft: '20px'}}/>
                     <span className="">{name}</span>
                   </BSNavLink>
                 </NavItem>

@@ -1,5 +1,6 @@
 import ChartJS from 'chart.js';
 import { getColor } from 'utils/colors';
+import 'chartjs-plugin-style';
 
 export const getStackLineChart = ({ labels, data }) => canvas => {
   const ctx = canvas.getContext('2d');

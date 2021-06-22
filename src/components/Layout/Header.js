@@ -5,6 +5,7 @@ import SearchInput from 'components/SearchInput';
 import { notificationsData } from 'demos/header';
 import withBadge from 'hocs/withBadge';
 import React from 'react';
+import FordLogo from '../../assets/img/logo/Ford_logo_flat.svg'
 import {
   MdClearAll,
   MdExitToApp,
@@ -81,7 +82,7 @@ class Header extends React.Component {
     return (
       <Navbar light expand className={bem.b('bg-white')}>
         <Nav navbar className="mr-2">
-          <Button outline onClick={this.handleSidebarControlButton}>
+          <Button outline onClick={this.handleSidebarControlButton} color="theme"  >
             <MdClearAll size={25} />
           </Button>
         </Nav>
@@ -90,7 +91,7 @@ class Header extends React.Component {
         </Nav>
 
         <Nav navbar className={bem.e('nav-right')}>
-          <NavItem className="d-inline-flex">
+          {/* <NavItem className="d-inline-flex">
             <NavLink id="Popover1" className="position-relative">
               {isNotificationConfirmed ? (
                 <MdNotificationsNone
@@ -116,13 +117,14 @@ class Header extends React.Component {
                 <Notifications notificationsData={notificationsData} />
               </PopoverBody>
             </Popover>
-          </NavItem>
+          </NavItem> */}
 
           <NavItem>
             <NavLink id="Popover2">
               <Avatar
                 onClick={this.toggleUserCardPopover}
                 className="can-click"
+                style={{marginRight: "10px"}}
               />
             </NavLink>
             <Popover
@@ -164,6 +166,7 @@ class Header extends React.Component {
               </PopoverBody>
             </Popover>
           </NavItem>
+          <img src={FordLogo} className='ford-logo' alt='ford logo' />
         </Nav>
       </Navbar>
     );
