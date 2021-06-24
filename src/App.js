@@ -17,8 +17,29 @@ const CardPage = React.lazy(() => import('pages/CardPage'));
 const ChartPage = React.lazy(() => import('pages/ChartPage'));
 const DashboardPage = React.lazy(() => import('pages/DashboardPage'));
 const DropdownPage = React.lazy(() => import('pages/DropdownPage'));
-const FormPage = React.lazy(() => import('pages/FormPage'));
+const EnterFleetInfoPage = React.lazy(() => import('pages/EnterFleetInfoPage'));
+const DefineColumnsPage = React.lazy(() => import('pages/DefineColumnsPage'));
 const InputGroupPage = React.lazy(() => import('pages/InputGroupPage'));
+const DecodedVINsPage = React.lazy(() => import('pages/DecodedVINsPage'));
+const ReviewEpaMatchesPage = React.lazy(() =>
+  import('pages/ReviewEpaMatchesPage'),
+);
+const SelectBestEpaMatchPage = React.lazy(() =>
+  import('pages/SelectBestEpaMatchPage'),
+);
+const ReviewEpaVehiclesFootprintPage = React.lazy(() =>
+  import('pages/ReviewEpaVehiclesFootprintPage'),
+);
+const SelectSaleVehiclesForPurchasePage = React.lazy(() =>
+  import('pages/SelectSaleVehiclesForPurchasePage'),
+);
+const SelectDefaultCandidateReplacementPage = React.lazy(() =>
+  import('pages/SelectDefaultCandidateReplacementPage'),
+);
+const UpdateFinanicalInfoAndSetBondsPage = React.lazy(() =>
+  import('pages/UpdateFinanicalInfoAndSetBondsPage'),
+);
+
 const ModalPage = React.lazy(() => import('pages/ModalPage'));
 const ProgressPage = React.lazy(() => import('pages/ProgressPage'));
 const TablePage = React.lazy(() => import('pages/TablePage'));
@@ -57,23 +78,51 @@ class App extends React.Component {
                 <Route exact path="/login-modal" component={AuthModalPage} />
 
                 <Route exact path="/" component={CardPage} />
-                <Route exact path="/EnterFleetInfo" component={FormPage} />
-                <Route exact path="/DefineColumns" component={FormPage} />
-                <Route exact path="/DecodedVINs" component={FormPage} />
                 <Route
                   exact
-                  path="/SelectBestEPAMatches"
-                  component={TablePage}
+                  path="/EnterFleetInfo"
+                  component={EnterFleetInfoPage}
+                />
+                <Route
+                  exact
+                  path="/DefineColumns"
+                  component={DefineColumnsPage}
+                />
+                <Route exact path="/DecodedVINs" component={DecodedVINsPage} />
+                <Route
+                  exact
+                  path="/ReviewEpaMatches"
+                  component={ReviewEpaMatchesPage}
+                />
+                <Route
+                  exact
+                  path="/SelectBestEPAMatch"
+                  component={SelectBestEpaMatchPage}
                 />
                 <Route
                   exact
                   path="/ReviewEPAVehiclesFootprint"
-                  component={TablePage}
+                  component={ReviewEpaVehiclesFootprintPage}
                 />
-                <Route exact path="/input-groups" component={InputGroupPage} />
                 <Route
                   exact
-                  path="/OptimizationVisualization"
+                  path="/SelectSaleVehiclesForPurchase"
+                  component={SelectSaleVehiclesForPurchasePage}
+                />
+                <Route
+                  exact
+                  path="/SelectDefaultCandidateReplacement"
+                  component={SelectDefaultCandidateReplacementPage}
+                />
+                <Route
+                  exact
+                  path="/UpdateFinanicalInfoAndSetBonds"
+                  component={UpdateFinanicalInfoAndSetBondsPage}
+                />
+
+                <Route
+                  exact
+                  path="/PrepareForOptimization"
                   component={ChartPage}
                 />
                 <Route

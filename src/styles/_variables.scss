@@ -12,14 +12,14 @@
 // $cyan: #00bcd4;
 // $white: #fff;
 $theme-colors: (
-  "primary": #5b6bbe,
-  "secondary": #ecb0be,
-  "success": #61ad63,
-  "danger": #eb654e,
-  "warning": #f3dd61,
-  "info": #5cc5e2,
-  "theme":#072847,
-
+  'primary': #5b6bbe,
+  'secondary': #ecb0be,
+  'success': #61ad63,
+  'danger': #eb654e,
+  'warning': #f3dd61,
+  'info': #5cc5e2,
+  'theme': #072847,
+  'themelight': #26435f,
 );
 
 $enable-gradients: true;
@@ -27,7 +27,6 @@ $enable-gradients: true;
 // card
 //
 $card-cap-bg: #fff;
-
 
 // sidebar
 $cr-sidebar-width: 240px;

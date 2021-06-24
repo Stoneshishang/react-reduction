@@ -3,6 +3,9 @@ import bg18Image from 'assets/img/bg/background_1920-18.jpg';
 import bg1Image from 'assets/img/bg/background_640-1.jpg';
 import bg3Image from 'assets/img/bg/background_640-3.jpg';
 import user1Image from 'assets/img/users/100_1.jpg';
+
+import fordFleet from 'assets/img/fpp-homepage/ford-fleet.PNG'
+
 import { UserCard } from 'components/Card';
 import Page from 'components/Page';
 import { bgCards, gradientCards, overlayCards } from 'demos/cardPage';
@@ -26,10 +29,10 @@ import {
 
 const CardPage = () => {
   return (
-    <Page title="Cards" breadcrumbs={[{ name: 'cards', active: true }]}>
-      <Row>
+    <Page title="Home">
+      {/* <Row>
         <Col md={6} sm={6} xs={12} className="mb-3">
-          <Card className="flex-row">
+          <Card className="flex-row" style={{boxShadow: '3px 3px 8px 1px #D1D1D1'}}>
             <CardImg
               className="card-img-left"
               src={bg1Image}
@@ -38,8 +41,9 @@ const CardPage = () => {
             <CardBody>
               <CardTitle>Horizontal Image Card(Left)</CardTitle>
               <CardText>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+              Ford’s Fleet Purchase Planner system (patent-pending) is designed to provide our fleet customers with 
+						optimal purchase strategies, based on their fleets' vehicle usage patterns, that incorporate 
+						their companies’ cost and sustainability goals. 
               </CardText>
             </CardBody>
           </Card>
@@ -58,23 +62,24 @@ const CardPage = () => {
             />
           </Card>
         </Col>
-      </Row>
+      </Row> */}
       <Row>
-        <Col md={6} sm={6} xs={12} className="mb-3">
-          <Card>
-            <CardImg top src={bg11Image} />
+        <Col md={12} sm={6} xs={12} className="mb-3">
+          <Card style={{boxShadow: '3px 3px 8px 2px #D1D1D1'}}>
+            <CardImg top src={fordFleet} />
             <CardBody>
-              <CardTitle>Card with image</CardTitle>
+              <CardTitle style={{fontSize: '1.7rem'}}>About Sustainable Fleet Purchase Planner</CardTitle>
               <CardText>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+            Ford’s Fleet Purchase Planner system (patent-pending) is designed to provide our fleet customers with 
+						optimal purchase strategies, based on their fleets' vehicle usage patterns, that incorporate 
+						their companies’ cost and sustainability goals. 
               </CardText>
             </CardBody>
           </Card>
         </Col>
 
-        <Col md={6} sm={6} xs={12} className="mb-3">
-          <Card>
+        {/* <Col md={6} sm={6} xs={12} className="mb-3">
+          <Card style={{boxShadow: '3px 3px 8px 1px #D1D1D1'}}>
             <CardImg top src={bg18Image} />
             <CardBody>
               <CardTitle>Card with list group</CardTitle>
@@ -96,30 +101,36 @@ const CardPage = () => {
               </CardLink>
             </CardBody>
           </Card>
-        </Col>
+        </Col> */}
       </Row>
 
       <Row>
-        {['', 'top', 'left', 'right'].map((color, index) => (
-          <Col key={index} md={6} sm={6} xs={12} className="mb-3">
+        {[''].map((color, index) => (
+          <Col key={index} md={12} sm={6} xs={12} className="mb-3">
             <Card
               inverse
               className={`border-0 bg-gradient-theme${
                 !!color ? '-' : ''
               }${color}`}
               style={{
-                height: 200,
+                height: 220,
+                boxShadow: '3px 3px 8px 2px #D1D1D1'
               }}
             >
               <CardBody className="d-flex flex-column justify-content-start align-items-start">
-                <CardTitle>Card title</CardTitle>
-                <CardText>card text</CardText>
+                <CardTitle style={{fontSize: '1.5rem'}}>Introduction</CardTitle>
+                <CardText>This web application navigates you through the analysis process, providing results that 
+						are completely customized and uniquely tailored for each customer.</CardText>
+              <CardText>To get started, please select an existing customer account or create a new customer account.</CardText>
               </CardBody>
 
-              <CardBody className="d-flex justify-content-between align-items-center">
-                <CardText>Karl David</CardText>
+              <CardBody className="d-flex justify-content-around align-items-center">
+             
                 <Button outline color="light">
-                  Click
+                  Register
+                </Button>
+                <Button outline color="light">
+                  Log in 
                 </Button>
               </CardBody>
             </Card>
@@ -127,7 +138,7 @@ const CardPage = () => {
         ))}
       </Row>
 
-      <Row>
+      {/* <Row>
         {overlayCards.map(({ imgUrl }, index) => {
           return (
             <Col key={index} md={6} sm={6} xs={12}>
@@ -218,7 +229,7 @@ const CardPage = () => {
             </Card>
           </Col>
         ))}
-      </Row>
+      </Row> */}
     </Page>
   );
 };
