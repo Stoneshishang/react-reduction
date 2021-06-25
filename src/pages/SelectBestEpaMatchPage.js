@@ -1,5 +1,6 @@
 import Page from 'components/Page';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import CurrencyInputField from 'react-currency-input-field';
 import {
@@ -18,6 +19,7 @@ import {
 } from 'reactstrap';
 
 const SelectBestEpaMatchPage = () => {
+  const history = useHistory();
   return (
     <Page title="Select Best EPA Match">
       <Row>
@@ -43,7 +45,11 @@ const SelectBestEpaMatchPage = () => {
                   </Input>
                 </FormGroup>
 
-                <Button color="theme" size="lg">
+                <Button
+                  color="theme"
+                  size="lg"
+                  onClick={() => history.push('/ReviewEPAVehiclesFootprint')}
+                >
                   EPA Vehicle Footprint
                 </Button>
               </Form>

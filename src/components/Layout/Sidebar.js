@@ -69,7 +69,7 @@ const FleetDataAssembly = [
   },
   {
     to: '/ReviewEpaMatches',
-    name: 'Review Epa Matches Page',
+    name: 'Review Epa Matches',
     exact: false,
     Icon: MdChromeReaderMode,
   },
@@ -100,6 +100,12 @@ const PurchaseRecommendation = [
   {
     to: '/SelectDefaultCandidateReplacement',
     name: 'Select Default Candidate Replacement',
+    exact: false,
+    Icon: MdCheckBox,
+  },
+  {
+    to: '/SelectCandidateReplacement',
+    name: 'Select Candidate Replacement',
     exact: false,
     Icon: MdCheckBox,
   },

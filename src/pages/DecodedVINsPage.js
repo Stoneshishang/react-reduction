@@ -1,7 +1,7 @@
 import Page from 'components/Page';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-import CurrencyInputField from 'react-currency-input-field';
 import {
   Button,
   Card,
@@ -18,6 +18,8 @@ import {
 } from 'reactstrap';
 
 const DecodedVINsPage = () => {
+  const history = useHistory();
+
   return (
     <Page title="Decoded VINs">
       <Row>
@@ -25,7 +27,11 @@ const DecodedVINsPage = () => {
           <Card style={{ boxShadow: '3px 3px 8px 2px #D1D1D1' }}>
             <CardBody>
               <Form>
-                <Button color="theme" size="lg">
+                <Button
+                  color="theme"
+                  size="lg"
+                  onClick={() => history.push('/ReviewEpaMatches')}
+                >
                   Find Matching EPA Records
                 </Button>
               </Form>

@@ -31,7 +31,6 @@ const Co2Reduction = [
 ];
 
 const genLineData = (moreData = {}, moreData2 = {}, moreData3 = {}) => {
-  
   return {
     labels: Co2Reduction,
     datasets: [
@@ -41,9 +40,9 @@ const genLineData = (moreData = {}, moreData2 = {}, moreData3 = {}) => {
         pointHoverBackgroundColor: 'rgba(106, 130, 221, 1)',
         borderColor: getColor('primary'),
         pointRadius: 2.3,
-        pointHoverRadius:4,
+        pointHoverRadius: 4,
         pointHoverBorderColor: 0,
-        
+
         data: [
           749921, 754424, 759188, 763930, 768709, 778011, 785611, 787436,
           793417, 799810, 812050, 817908, 824301, 830828, 837458, 844054,
@@ -56,7 +55,7 @@ const genLineData = (moreData = {}, moreData2 = {}, moreData3 = {}) => {
         backgroundColor: getColor('secondary'),
         pointHoverBackgroundColor: 'rgba(252,92,125,1)',
         pointRadius: 2.3,
-        pointHoverRadius:4,
+        pointHoverRadius: 4,
         borderColor: getColor('secondary'),
         pointHoverBorderColor: 0,
         data: [
@@ -68,9 +67,9 @@ const genLineData = (moreData = {}, moreData2 = {}, moreData3 = {}) => {
       {
         label: 'Car Price',
         backgroundColor: getColor('info'),
-        pointHoverBackgroundColor:'rgba(0,201,255,1)',
+        pointHoverBackgroundColor: 'rgba(0,201,255,1)',
         pointRadius: 2.3,
-        pointHoverRadius:4,
+        pointHoverRadius: 4,
         borderColor: getColor('info'),
         pointHoverBorderColor: 0,
         data: [
@@ -108,7 +107,7 @@ const stackedBarData = () => {
       {
         label: '2021 Escape FWD HEV 2.5 L (44, 37)',
         backgroundColor: getColor('info'),
-        hoverBackgroundColor:'rgba(0,201,255,0.7)',
+        hoverBackgroundColor: 'rgba(0,201,255,0.7)',
         borderColor: getColor('info'),
         borderWidth: 0,
         data: [6, 6, 6, 6, 6, 6, 5, 6, 4, 5, 4, 2, 3, 4, 5, 6, 6, 6],
@@ -129,7 +128,6 @@ const stackedBarData = () => {
         borderWidth: 0,
         data: [2, 2, 2, 2, 2, 2, 4, 3, 4, 4, 5, 6, 6, 6, 6, 6, 6, 6],
       },
-      
     ],
   };
 };
@@ -159,16 +157,15 @@ const renderPieChart = () => {
   console.log('====================================');
 
   return (
-  <div>
-    <h1>Pie Chart</h1>
-  </div>
-    )
-}
+    <div>
+      <h1>Pie Chart</h1>
+    </div>
+  );
+};
 
-
-const ChartPage = () => {
+const OptimizationResultsPage = () => {
   return (
-    <Page title="Charts" breadcrumbs={[{ name: 'Charts', active: true }]}>
+    <Page title="Charts">
       <Row>
         {/* <Col xl={6} lg={12} md={12}>
           <Card>
@@ -189,27 +186,27 @@ const ChartPage = () => {
                   { fill: false },
                   { fill: false },
                 )}
-                options={{legend:{position: 'right'},
-                scales: {
-                  xAxes: [
-                    {
-              
-                      scaleLabel: {
-                        display: true,
-                        labelString: 'CO2 Reduction',
+                options={{
+                  legend: { position: 'right' },
+                  scales: {
+                    xAxes: [
+                      {
+                        scaleLabel: {
+                          display: true,
+                          labelString: 'CO2 Reduction',
+                        },
                       },
-                    },
-                  ],
-                  yAxes: [
-                    {
-                      
-                      scaleLabel: {
-                        display: true,
-                        labelString: 'Cost',
+                    ],
+                    yAxes: [
+                      {
+                        scaleLabel: {
+                          display: true,
+                          labelString: 'Cost',
+                        },
                       },
-                    },
-                  ],
-                },}}
+                    ],
+                  },
+                }}
               />
             </CardBody>
           </Card>
@@ -222,14 +219,13 @@ const ChartPage = () => {
             <CardHeader>Stacked Bar</CardHeader>
             <CardBody>
               <Bar
-              
                 data={stackedBarData}
                 options={{
                   onClick: renderPieChart,
-                  legend:{position: 'right'},
+                  legend: { position: 'right' },
                   scales: {
                     xAxes: [
-                      {                        
+                      {
                         stacked: true,
                         scaleLabel: {
                           display: true,
@@ -305,4 +301,4 @@ const ChartPage = () => {
   );
 };
 
-export default ChartPage;
+export default OptimizationResultsPage;

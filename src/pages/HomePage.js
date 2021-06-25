@@ -3,8 +3,8 @@ import bg18Image from 'assets/img/bg/background_1920-18.jpg';
 import bg1Image from 'assets/img/bg/background_640-1.jpg';
 import bg3Image from 'assets/img/bg/background_640-3.jpg';
 import user1Image from 'assets/img/users/100_1.jpg';
-
-import fordFleet from 'assets/img/fpp-homepage/ford-fleet.PNG'
+import { useHistory } from 'react-router-dom';
+import fordFleet from 'assets/img/fpp-homepage/ford-fleet.PNG';
 
 import { UserCard } from 'components/Card';
 import Page from 'components/Page';
@@ -27,7 +27,9 @@ import {
   Row,
 } from 'reactstrap';
 
-const CardPage = () => {
+const HomePage = () => {
+  const history = useHistory();
+
   return (
     <Page title="Home">
       {/* <Row>
@@ -65,14 +67,17 @@ const CardPage = () => {
       </Row> */}
       <Row>
         <Col md={12} sm={6} xs={12} className="mb-3">
-          <Card style={{boxShadow: '3px 3px 8px 2px #D1D1D1'}}>
+          <Card style={{ boxShadow: '3px 3px 8px 2px #D1D1D1' }}>
             <CardImg top src={fordFleet} />
             <CardBody>
-              <CardTitle style={{fontSize: '1.7rem'}}>About Sustainable Fleet Purchase Planner</CardTitle>
+              <CardTitle style={{ fontSize: '1.7rem' }}>
+                About Sustainable Fleet Purchase Planner
+              </CardTitle>
               <CardText>
-            Ford’s Fleet Purchase Planner system (patent-pending) is designed to provide our fleet customers with 
-						optimal purchase strategies, based on their fleets' vehicle usage patterns, that incorporate 
-						their companies’ cost and sustainability goals. 
+                Ford’s Fleet Purchase Planner system (patent-pending) is
+                designed to provide our fleet customers with optimal purchase
+                strategies, based on their fleets' vehicle usage patterns, that
+                incorporate their companies’ cost and sustainability goals.
               </CardText>
             </CardBody>
           </Card>
@@ -113,24 +118,39 @@ const CardPage = () => {
                 !!color ? '-' : ''
               }${color}`}
               style={{
-                height: 220,
-                boxShadow: '3px 3px 8px 2px #D1D1D1'
+                height: 250,
+                boxShadow: '3px 3px 8px 2px #D1D1D1',
               }}
             >
               <CardBody className="d-flex flex-column justify-content-start align-items-start">
-                <CardTitle style={{fontSize: '1.5rem'}}>Introduction</CardTitle>
-                <CardText>This web application navigates you through the analysis process, providing results that 
-						are completely customized and uniquely tailored for each customer.</CardText>
-              <CardText>To get started, please select an existing customer account or create a new customer account.</CardText>
+                <CardTitle style={{ fontSize: '1.5rem' }}>
+                  Introduction
+                </CardTitle>
+                <CardText>
+                  This web application navigates you through the analysis
+                  process, providing results that are completely customized and
+                  uniquely tailored for each customer.
+                </CardText>
+                <CardText>
+                  To get started, please select an existing customer account or
+                  create a new customer account.
+                </CardText>
               </CardBody>
 
               <CardBody className="d-flex justify-content-around align-items-center">
-             
-                <Button outline color="light">
+                <Button
+                  outline
+                  color="light"
+                  onClick={() => history.push('/signup')}
+                >
                   Register
                 </Button>
-                <Button outline color="light">
-                  Log in 
+                <Button
+                  outline
+                  color="light"
+                  onClick={() => history.push('/login')}
+                >
+                  Log in
                 </Button>
               </CardBody>
             </Card>
@@ -234,4 +254,4 @@ const CardPage = () => {
   );
 };
 
-export default CardPage;
+export default HomePage;

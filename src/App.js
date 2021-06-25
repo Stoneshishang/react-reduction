@@ -13,8 +13,8 @@ const AuthModalPage = React.lazy(() => import('pages/AuthModalPage'));
 const BadgePage = React.lazy(() => import('pages/BadgePage'));
 const ButtonGroupPage = React.lazy(() => import('pages/ButtonGroupPage'));
 const ButtonPage = React.lazy(() => import('pages/ButtonPage'));
-const CardPage = React.lazy(() => import('pages/CardPage'));
-const ChartPage = React.lazy(() => import('pages/ChartPage'));
+const HomePage = React.lazy(() => import('pages/HomePage'));
+
 const DashboardPage = React.lazy(() => import('pages/DashboardPage'));
 const DropdownPage = React.lazy(() => import('pages/DropdownPage'));
 const EnterFleetInfoPage = React.lazy(() => import('pages/EnterFleetInfoPage'));
@@ -36,8 +36,20 @@ const SelectSaleVehiclesForPurchasePage = React.lazy(() =>
 const SelectDefaultCandidateReplacementPage = React.lazy(() =>
   import('pages/SelectDefaultCandidateReplacementPage'),
 );
+const SelectCandidateReplacementPage = React.lazy(() =>
+  import('pages/SelectCandidateReplacementPage'),
+);
+
 const UpdateFinanicalInfoAndSetBondsPage = React.lazy(() =>
   import('pages/UpdateFinanicalInfoAndSetBondsPage'),
+);
+
+const PrepareForOptimizationPage = React.lazy(() =>
+  import('pages/PrepareForOptimizationPage'),
+);
+
+const OptimizationResultsPage = React.lazy(() =>
+  import('pages/OptimizationResultsPage'),
 );
 
 const ModalPage = React.lazy(() => import('pages/ModalPage'));
@@ -77,7 +89,7 @@ class App extends React.Component {
               <React.Suspense fallback={<PageSpinner />}>
                 <Route exact path="/login-modal" component={AuthModalPage} />
 
-                <Route exact path="/" component={CardPage} />
+                <Route exact path="/" component={HomePage} />
                 <Route
                   exact
                   path="/EnterFleetInfo"
@@ -116,6 +128,11 @@ class App extends React.Component {
                 />
                 <Route
                   exact
+                  path="/SelectCandidateReplacement"
+                  component={SelectCandidateReplacementPage}
+                />
+                <Route
+                  exact
                   path="/UpdateFinanicalInfoAndSetBonds"
                   component={UpdateFinanicalInfoAndSetBondsPage}
                 />
@@ -123,12 +140,12 @@ class App extends React.Component {
                 <Route
                   exact
                   path="/PrepareForOptimization"
-                  component={ChartPage}
+                  component={PrepareForOptimizationPage}
                 />
                 <Route
                   exact
                   path="/OptimizationResults"
-                  component={ChartPage}
+                  component={OptimizationResultsPage}
                 />
               </React.Suspense>
             </MainLayout>

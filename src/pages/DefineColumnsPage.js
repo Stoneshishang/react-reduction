@@ -1,5 +1,6 @@
 import Page from 'components/Page';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import CurrencyInputField from 'react-currency-input-field';
 import {
@@ -18,6 +19,8 @@ import {
 } from 'reactstrap';
 
 const DefineColumnsPage = () => {
+  const history = useHistory();
+
   return (
     <Page title="Define Columns">
       <Row>
@@ -79,7 +82,13 @@ const DefineColumnsPage = () => {
                   </Col>
                 </Row>
 
-                <Button color="theme" size="lg">
+                <Button
+                  color="theme"
+                  size="lg"
+                  onClick={() => {
+                    history.push('/DecodedVINs');
+                  }}
+                >
                   Decode VINs
                 </Button>
               </Form>

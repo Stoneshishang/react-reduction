@@ -18,10 +18,10 @@ import {
   Row,
 } from 'reactstrap';
 
-const SelectDefaultCandidateReplacementPage = () => {
+const SelectCandidateReplacementPage = () => {
   const history = useHistory();
   return (
-    <Page title="Select Default Candidate Replacement">
+    <Page title="Select Candidate Replacements">
       <Row>
         <Col xl={12} lg={12} md={12}>
           <Card style={{ boxShadow: '3px 3px 8px 2px #D1D1D1' }}>
@@ -30,9 +30,11 @@ const SelectDefaultCandidateReplacementPage = () => {
                 <Button
                   color="theme"
                   size="lg"
-                  onClick={() => history.push('/SelectCandidateReplacement')}
+                  onClick={() =>
+                    history.push('/UpdateFinanicalInfoAndSetBonds')
+                  }
                 >
-                  Continue to Vehicle Replacement
+                  Continue to Pricing
                 </Button>
               </Form>
             </CardBody>
@@ -43,4 +45,4 @@ const SelectDefaultCandidateReplacementPage = () => {
   );
 };
 
-export default SelectDefaultCandidateReplacementPage;
+export default SelectCandidateReplacementPage;

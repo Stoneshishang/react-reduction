@@ -1,5 +1,6 @@
 import Page from 'components/Page';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import CurrencyInputField from 'react-currency-input-field';
 import {
@@ -18,6 +19,7 @@ import {
 } from 'reactstrap';
 
 const SelectSaleVehiclesForPurchasePage = () => {
+  const history = useHistory();
   return (
     <Page title="Select Sale Vehicles For Purchase">
       <Row>
@@ -25,7 +27,13 @@ const SelectSaleVehiclesForPurchasePage = () => {
           <Card style={{ boxShadow: '3px 3px 8px 2px #D1D1D1' }}>
             <CardBody>
               <Form>
-                <Button color="theme" size="lg">
+                <Button
+                  color="theme"
+                  size="lg"
+                  onClick={() =>
+                    history.push('/SelectDefaultCandidateReplacement')
+                  }
+                >
                   Replacement Strategy
                 </Button>
               </Form>

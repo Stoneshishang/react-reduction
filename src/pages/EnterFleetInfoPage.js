@@ -1,5 +1,6 @@
 import Page from 'components/Page';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import CurrencyInputField from 'react-currency-input-field';
 import {
@@ -18,6 +19,8 @@ import {
 } from 'reactstrap';
 
 const EnterFleetInfoPage = () => {
+  const history = useHistory();
+
   return (
     <Page title="Enter Fleet Info">
       <Row>
@@ -118,7 +121,11 @@ const EnterFleetInfoPage = () => {
                   </Col>
                 </Row>
 
-                <Button color="theme" size="lg">
+                <Button
+                  color="theme"
+                  size="lg"
+                  onClick={() => history.push('/DefineColumns')}
+                >
                   Continue to Define Columns
                 </Button>
               </Form>
