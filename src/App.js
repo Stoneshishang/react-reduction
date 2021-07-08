@@ -7,6 +7,7 @@ import React from 'react';
 import componentQueries from 'react-component-queries';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
+import { CsvDataProvider } from './ContextState';
 
 const AlertPage = React.lazy(() => import('pages/AlertPage'));
 const AuthModalPage = React.lazy(() => import('pages/AuthModalPage'));
@@ -90,52 +91,58 @@ class App extends React.Component {
                 <Route exact path="/login-modal" component={AuthModalPage} />
 
                 <Route exact path="/" component={HomePage} />
-                <Route
-                  exact
-                  path="/EnterFleetInfo"
-                  component={EnterFleetInfoPage}
-                />
-                <Route
-                  exact
-                  path="/DefineColumns"
-                  component={DefineColumnsPage}
-                />
-                <Route exact path="/DecodedVINs" component={DecodedVINsPage} />
-                <Route
-                  exact
-                  path="/ReviewEpaMatches"
-                  component={ReviewEpaMatchesPage}
-                />
-                <Route
-                  exact
-                  path="/SelectBestEPAMatch"
-                  component={SelectBestEpaMatchPage}
-                />
-                <Route
-                  exact
-                  path="/ReviewEPAVehiclesFootprint"
-                  component={ReviewEpaVehiclesFootprintPage}
-                />
-                <Route
-                  exact
-                  path="/SelectSaleVehiclesForPurchase"
-                  component={SelectSaleVehiclesForPurchasePage}
-                />
-                <Route
-                  exact
-                  path="/SelectDefaultCandidateReplacement"
-                  component={SelectDefaultCandidateReplacementPage}
-                />
-                <Route
-                  exact
-                  path="/SelectCandidateReplacement"
-                  component={SelectCandidateReplacementPage}
-                />
-                <Route
-                  exact
-                  path="/UpdateFinanicalInfoAndSetBonds"
-                  component={UpdateFinanicalInfoAndSetBondsPage}
-                />
+                <CsvDataProvider>
+                  <Route
+                    exact
+                    path="/EnterFleetInfo"
+                    component={EnterFleetInfoPage}
+                  />
+                  <Route
+                    exact
+                    path="/DefineColumns"
+                    component={DefineColumnsPage}
+                  />
+                  <Route
+                    exact
+                    path="/DecodedVINs"
+                    component={DecodedVINsPage}
+                  />
+                  <Route
+                    exact
+                    path="/ReviewEpaMatches"
+                    component={ReviewEpaMatchesPage}
+                  />
+                  <Route
+                    exact
+                    path="/SelectBestEPAMatch"
+                    component={SelectBestEpaMatchPage}
+                  />
+                  <Route
+                    exact
+                    path="/ReviewEPAVehiclesFootprint"
+                    component={ReviewEpaVehiclesFootprintPage}
+                  />
+                  <Route
+                    exact
+                    path="/SelectSaleVehiclesForPurchase"
+                    component={SelectSaleVehiclesForPurchasePage}
+                  />
+                  <Route
+                    exact
+                    path="/SelectDefaultCandidateReplacement"
+                    component={SelectDefaultCandidateReplacementPage}
+                  />
+                  <Route
+                    exact
+                    path="/SelectCandidateReplacement"
+                    component={SelectCandidateReplacementPage}
+                  />
+                  <Route
+                    exact
+                    path="/UpdateFinanicalInfoAndSetBonds"
+                    component={UpdateFinanicalInfoAndSetBondsPage}
+                  />
+                </CsvDataProvider>
 
                 <Route
                   exact

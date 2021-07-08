@@ -1,7 +1,8 @@
 import Page from 'components/Page';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import { Context } from '../ContextState';
+import { RenderTable } from './RenderTable';
 import {
   Button,
   Card,
@@ -15,9 +16,11 @@ import {
   Input,
   Label,
   Row,
+  Table,
 } from 'reactstrap';
 
 const DecodedVINsPage = () => {
+  const { enteredFleetData } = useContext(Context);
   const history = useHistory();
 
   return (
@@ -27,13 +30,34 @@ const DecodedVINsPage = () => {
           <Card style={{ boxShadow: '3px 3px 8px 2px #D1D1D1' }}>
             <CardBody>
               <Form>
-                <Button
-                  color="theme"
-                  size="lg"
-                  onClick={() => history.push('/ReviewEpaMatches')}
-                >
-                  Find Matching EPA Records
-                </Button>
+                <Row>
+                  <h5 style={{ display: 'inline-block', marginLeft: '1rem' }}>
+                    Review below {enteredFleetData.length - 1} decoded VINs
+                    table
+                  </h5>
+                  <Button
+                    style={{ marginLeft: '47rem', marginBottom: '1rem' }}
+                    color="theme"
+                    size="lg"
+                    onClick={() => history.push('/ReviewEpaMatches')}
+                  >
+                    Find Matching EPA Records
+                  </Button>
+                </Row>
+
+                {enteredFleetData.length !== 0 && (
+                  <Row>
+                    <Table bordered hover>
+                      {enteredFleetData.map((dataItem, index) => {
+                        return (
+                          <React.Fragment key={index}>
+                            {RenderTable(dataItem, index)}
+                          </React.Fragment>
+                        );
+                      })}
+                    </Table>
+                  </Row>
+                )}
               </Form>
             </CardBody>
           </Card>

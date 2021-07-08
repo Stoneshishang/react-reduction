@@ -1,7 +1,8 @@
 import Page from 'components/Page';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import { Context } from '../ContextState';
+import { RenderTable } from './RenderTable';
 import CurrencyInputField from 'react-currency-input-field';
 import {
   Button,
@@ -16,9 +17,11 @@ import {
   Input,
   Label,
   Row,
+  Table,
 } from 'reactstrap';
 
 const ReviewEpaMatchesPage = () => {
+  const { enteredFleetData } = useContext(Context);
   const history = useHistory();
 
   return (
@@ -28,13 +31,34 @@ const ReviewEpaMatchesPage = () => {
           <Card style={{ boxShadow: '3px 3px 8px 2px #D1D1D1' }}>
             <CardBody>
               <Form>
-                <Button
-                  color="theme"
-                  size="lg"
-                  onClick={() => history.push('/SelectBestEPAMatch')}
-                >
-                  Select Best EPA Matches
-                </Button>
+                <Row>
+                  <h5 style={{ display: 'inline-block', marginLeft: '1rem' }}>
+                    Review below {enteredFleetData.length - 1} vehicles with EPA
+                    matches
+                  </h5>
+                  <Button
+                    style={{ marginLeft: '44rem', marginBottom: '1rem' }}
+                    color="theme"
+                    size="lg"
+                    onClick={() => history.push('/SelectBestEPAMatch')}
+                  >
+                    Select Best EPA Matches
+                  </Button>
+                </Row>
+
+                {enteredFleetData.length !== 0 && (
+                  <Row>
+                    <Table bordered hover>
+                      {enteredFleetData.map((dataItem, index) => {
+                        return (
+                          <React.Fragment key={index}>
+                            {RenderTable(dataItem, index)}
+                          </React.Fragment>
+                        );
+                      })}
+                    </Table>
+                  </Row>
+                )}
               </Form>
             </CardBody>
           </Card>

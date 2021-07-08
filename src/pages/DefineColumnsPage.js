@@ -1,7 +1,9 @@
 import Page from 'components/Page';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import { Context } from '../ContextState';
+import { RenderTable } from './RenderTable';
 import CurrencyInputField from 'react-currency-input-field';
 import {
   Button,
@@ -15,11 +17,16 @@ import {
   FormText,
   Input,
   Label,
+  Table,
   Row,
 } from 'reactstrap';
 
 const DefineColumnsPage = () => {
+  const { enteredFleetData } = useContext(Context);
   const history = useHistory();
+  // console.log('==================DefineColumnPage==================');
+  // console.log(enteredFleetData);
+  // console.log('====================================');
 
   return (
     <Page title="Define Columns">
@@ -96,6 +103,25 @@ const DefineColumnsPage = () => {
           </Card>
         </Col>
       </Row>
+      {enteredFleetData.length !== 0 && (
+        <Row>
+          <Col xl={12} lg={12} md={12}>
+            <Card style={{ boxShadow: '3px 3px 8px 2px #e0e0e0' }}>
+              <CardBody>
+                <Table bordered hover>
+                  {enteredFleetData.map((dataItem, index) => {
+                    return (
+                      <React.Fragment key={index}>
+                        {RenderTable(dataItem, index)}
+                      </React.Fragment>
+                    );
+                  })}
+                </Table>
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+      )}
     </Page>
   );
 };

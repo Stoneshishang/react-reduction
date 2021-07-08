@@ -1,7 +1,9 @@
 import Page from 'components/Page';
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import { CSVReader } from 'react-papaparse';
+import { Context } from '../ContextState';
+import { RenderTable } from './RenderTable';
 import CurrencyInputField from 'react-currency-input-field';
 import {
   Button,
@@ -16,10 +18,33 @@ import {
   Input,
   Label,
   Row,
+  Table,
 } from 'reactstrap';
 
 const EnterFleetInfoPage = () => {
+  const { enteredFleetData, setEnteredFleetData } = useContext(Context);
+
+  const handleOnDrop = data => {
+    // console.log('------------handleOnDrop---------------');
+    if (data !== null) {
+      setEnteredFleetData(data);
+    }
+  };
+
+  const handleOnError = (err, file, inputElem, reason) => {
+    console.log(err);
+  };
+
+  const handleOnRemoveFile = data => {
+    console.log('------------handleOnRemoveFile---------------');
+    console.log(data);
+    console.log('---------------------------');
+  };
+
   const history = useHistory();
+
+  // console.log('============ContextState========================');
+  // console.log(enteredFleetData);
 
   return (
     <Page title="Enter Fleet Info">
@@ -105,7 +130,7 @@ const EnterFleetInfoPage = () => {
                   <Col md={4}>
                     <FormGroup>
                       <Label for="exampleState">Select Default Location</Label>
-                      <Input type="select" name="select" id="exampleSelect">
+                      <Input type="select" name="select" id="exampleSelect1">
                         <option>US AVERAGE</option>
                         <option>EU AVERAGE</option>
                       </Input>
@@ -114,9 +139,51 @@ const EnterFleetInfoPage = () => {
                   <Col md={4}>
                     <FormGroup>
                       <Label for="exampleFile">
-                        Select a Vehicle Fleet File
+                        Drop or Click Below to Upload a Vehicle Fleet CSV File
                       </Label>
-                      <Input type="file" name="file" id="exampleFile" />
+                      <CSVReader
+                        onDrop={handleOnDrop}
+                        onError={handleOnError}
+                        addRemoveButton
+                        onRemoveFile={handleOnRemoveFile}
+                        style={{
+                          dropArea: {
+                            borderRadius: 5,
+                          },
+                          dropAreaActive: {
+                            borderColor: 'red',
+                          },
+                          dropFile: {
+                            width: 100,
+                            height: 100,
+                            background: '#ccc',
+                          },
+                          fileSizeInfo: {
+                            color: '#fff',
+                            backgroundColor: '#000',
+                            borderRadius: 3,
+                            lineHeight: 1,
+                            marginBottom: '0.4em',
+                            padding: '0 0.4em',
+                          },
+                          fileNameInfo: {
+                            color: '#fff',
+                            backgroundColor: '#696969',
+                            borderRadius: 3,
+                            fontSize: 12,
+                            lineHeight: 1,
+                            padding: '0 0.2em',
+                          },
+                          removeButton: {
+                            color: 'red',
+                          },
+                          progressBar: {
+                            backgroundColor: 'green',
+                          },
+                        }}
+                      >
+                        {/* <span>Drop CSV file here or click to upload.</span> */}
+                      </CSVReader>
                     </FormGroup>
                   </Col>
                 </Row>
@@ -133,6 +200,25 @@ const EnterFleetInfoPage = () => {
           </Card>
         </Col>
       </Row>
+      {enteredFleetData.length !== 0 && (
+        <Row>
+          <Col xl={12} lg={12} md={12}>
+            <Card style={{ boxShadow: '3px 3px 8px 2px #e0e0e0' }}>
+              <CardBody>
+                <Table bordered hover>
+                  {enteredFleetData.map((dataItem, index) => {
+                    return (
+                      <React.Fragment key={index}>
+                        {RenderTable(dataItem, index)}
+                      </React.Fragment>
+                    );
+                  })}
+                </Table>
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+      )}
     </Page>
   );
 };
