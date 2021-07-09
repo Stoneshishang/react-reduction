@@ -2,7 +2,7 @@ import Page from 'components/Page';
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Context } from '../ContextState';
-import { RenderTable } from './RenderTable';
+import { RenderTable } from '../components/RenderTable';
 import {
   Button,
   Card,

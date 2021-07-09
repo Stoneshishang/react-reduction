@@ -3,7 +3,7 @@ import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { CSVReader } from 'react-papaparse';
 import { Context } from '../ContextState';
-import { RenderTable } from './RenderTable';
+import { RenderTable } from '../components/RenderTable';
 import CurrencyInputField from 'react-currency-input-field';
 import {
   Button,
@@ -205,7 +205,7 @@ const EnterFleetInfoPage = () => {
           <Col xl={12} lg={12} md={12}>
             <Card style={{ boxShadow: '3px 3px 8px 2px #e0e0e0' }}>
               <CardBody>
-                <Table bordered hover>
+                <Table bordered hover striped>
                   {enteredFleetData.map((dataItem, index) => {
                     return (
                       <React.Fragment key={index}>

@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { Context } from '../ContextState';
-import { RenderTable } from './RenderTable';
+import { RenderTable } from '../components/RenderTable';
 import CurrencyInputField from 'react-currency-input-field';
 import {
   Button,
