@@ -3,7 +3,7 @@ import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { CSVReader } from 'react-papaparse';
 import { Context } from '../ContextState';
-import { RenderTable } from '../components/RenderTable';
+import { RenderTable } from '../components/FleetInfoInputTable';
 import CurrencyInputField from 'react-currency-input-field';
 import {
   Button,
