@@ -1,7 +1,9 @@
 import Page from 'components/Page';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-
+import { FinancialInfoAndBondsTable } from '../components/UpdateFinanicalInfoAndSetBondsTable';
+import { readString } from 'react-papaparse';
+import SaleVehicleData from '../demos/SaleVehicleData';
 import CurrencyInputField from 'react-currency-input-field';
 import {
   Button,
@@ -10,16 +12,15 @@ import {
   CardHeader,
   Col,
   Form,
-  FormFeedback,
-  FormGroup,
-  FormText,
-  Input,
-  Label,
+  Table,
   Row,
 } from 'reactstrap';
 
 const UpdateFinanicalInfoAndSetBondsPage = () => {
   const history = useHistory();
+  const saleVehicleMpg = readString(SaleVehicleData);
+  const { data } = saleVehicleMpg;
+
   return (
     <Page title="Update Finanical Info And Set Bonds">
       <Row>
@@ -27,6 +28,15 @@ const UpdateFinanicalInfoAndSetBondsPage = () => {
           <Card style={{ boxShadow: '3px 3px 8px 2px #D1D1D1' }}>
             <CardBody>
               <Form>
+                <Table>
+                  {data.map((data, index) => {
+                    return (
+                      <React.Fragment key={index}>
+                        {FinancialInfoAndBondsTable(data, index)}
+                      </React.Fragment>
+                    );
+                  })}
+                </Table>
                 <Button
                   color="theme"
                   size="lg"

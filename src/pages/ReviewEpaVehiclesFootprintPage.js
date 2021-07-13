@@ -2,6 +2,8 @@ import Page from 'components/Page';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { CsvToHtmlTable } from 'react-csv-to-table';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 import CurrencyInputField from 'react-currency-input-field';
 import {
   Button,
@@ -130,6 +132,10 @@ const ReviewEpaVehiclesFootprintPage = () => {
 
   const history = useHistory();
 
+  const handleChange = event => {
+    setOpen({ ...open, [event.target.name]: event.target.checked });
+  };
+
   return (
     <Page title="Review EPA Vehicle Footprint">
       <RowB>
@@ -163,20 +169,7 @@ const ReviewEpaVehiclesFootprintPage = () => {
 
                   <tbody>
                     <tr>
-                      <th>
-                        <IconButton
-                          aria-label="expand row"
-                          size="small"
-                          onClick={() => setOpen(!open)}
-                        >
-                          {open ? (
-                            <KeyboardArrowUpIcon />
-                          ) : (
-                            <KeyboardArrowDownIcon />
-                          )}
-                        </IconButton>
-                        $36,613
-                      </th>
+                      <th>$36,613</th>
                       <th>140 Metric Tons</th>
                       <th>$37,216</th>
                       <th>137 Metric Tons</th>
@@ -194,6 +187,18 @@ const ReviewEpaVehiclesFootprintPage = () => {
                 >
                   Select Replacement Vehicles
                 </Button>
+                <FormControlLabel
+                  style={{ marginLeft: '50rem', marginTop: '2rem' }}
+                  control={
+                    <Switch
+                      checked={open}
+                      onChange={() => setOpen(!open)}
+                      name="checkedB"
+                      color="primary"
+                    />
+                  }
+                  label="Display Detailed Vehicle Info"
+                />
               </Form>
             </CardBody>
           </Card>
@@ -208,8 +213,12 @@ const ReviewEpaVehiclesFootprintPage = () => {
               <CardBody>
                 <TableRow>
                   <TableCell
-                    style={{ paddingBottom: 0, paddingTop: 0 }}
-                    colSpan={6}
+                    style={{
+                      paddingBottom: 0,
+                      paddingTop: 0,
+                      justifyContent: 'center',
+                    }}
+                    colSpan={12}
                   >
                     <Collapse in={open} timeout="auto" unmountOnExit>
                       <CsvToHtmlTable

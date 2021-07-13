@@ -30,24 +30,6 @@ const SelectDefaultCandidateReplacementPage = () => {
     { value: '4', label: '2022 E Transit' },
   ];
 
-  const customStyles = {
-    app: {
-      backgroundColor: 'rgba(0,0,0,0.1)',
-      justifyItems: 'center',
-      alignItems: 'center',
-      display: 'grid',
-      height: '100vh',
-      fontFamily: 'Arial',
-      color: 'rgba(0,0,100,1)',
-      gridTemplateColumns: '1fr',
-      fontSize: 25,
-    },
-    select: {
-      width: '80%',
-      maxWidth: 600,
-    },
-  };
-
   return (
     <Page title="Select Default Candidate Replacement">
       <Row>
@@ -55,11 +37,15 @@ const SelectDefaultCandidateReplacementPage = () => {
           <Card style={{ boxShadow: '3px 3px 8px 2px #D1D1D1' }}>
             <CardBody>
               <Form>
-                <h5>
+                <h5 style={{ lineHeight: '2rem' }}>
                   Replace{' '}
-                  <span style={{ color: '#37cc4b', marginTop: '1rem' }}>
-                    Vehicle 16: 2018; COROLLA; TOYOTA; 1.8; 4; FWD; SEDAN;
-                    2T1BURHE9JC975914; 19704; 30; MICHIGAN; 2.85
+                  <span
+                    style={{
+                      color: '#37cc4b',
+                      marginTop: '1rem',
+                    }}
+                  >
+                    2018; COROLLA; TOYOTA; 1.8; 4; FWD; SEDAN;
                   </span>{' '}
                   with{' '}
                   <Select
@@ -68,16 +54,13 @@ const SelectDefaultCandidateReplacementPage = () => {
                     defaultValue={[]}
                     isMulti
                     options={saleVehicleList}
-                    // width="100px"
-                    styles={customStyles.select}
                   />
                 </h5>
 
-                <h5>
+                <h5 style={{ marginTop: '2rem', lineHeight: '2rem' }}>
                   Replace{' '}
                   <span style={{ color: '#37cc4b', marginTop: '1rem' }}>
-                    Vehicle 17: 2018; MALIBU; Chevrolet; 1.8; 4; FWD; SEDAN;
-                    1G1ZD5STXKF163053 ; 19704; 30; MICHIGAN; 2.85
+                    2018; MALIBU; Chevrolet; 1.8; 4; FWD; SEDAN;
                   </span>{' '}
                   with{' '}
                   <Select
@@ -86,8 +69,6 @@ const SelectDefaultCandidateReplacementPage = () => {
                     defaultValue={[]}
                     isMulti
                     options={saleVehicleList}
-                    // width="100px"
-                    styles={customStyles.select}
                   />
                 </h5>
                 <Button

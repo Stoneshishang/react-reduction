@@ -3,7 +3,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { SelectSaleVehicleTable } from '../components/SelectSaleVehicleTable';
 import { readString } from 'react-papaparse';
-import str from '../demos/SaleVehicleData';
+import SaleVehicleData from '../demos/SaleVehicleData';
 // import { DataGrid } from '@material-ui/data-grid';
 import CurrencyInputField from 'react-currency-input-field';
 import {
@@ -30,7 +30,7 @@ const SelectSaleVehiclesForPurchasePage = () => {
   // 2022 F150 Lightning ,85,50
   // 2022 E Transit,61,66`;
 
-  const saleVehicleMpg = readString(str);
+  const saleVehicleMpg = readString(SaleVehicleData);
   const { data } = saleVehicleMpg;
   console.log('=================saleVehicleMpg===================');
   console.log(data);

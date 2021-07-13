@@ -1,9 +1,11 @@
 import Page from 'components/Page';
 
 import { getColor } from 'utils/colors';
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
+import { Button as ButtonB } from 'react-bootstrap';
 import {
   Button,
   ButtonGroup,
@@ -19,10 +21,20 @@ import {
   Input,
   Label,
   Row,
+  Table,
 } from 'reactstrap';
+
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 const PrepareForOptimizationPage = () => {
   const history = useHistory();
+
+  const RadioBtnStyles = { marginRight: '2rem', marginTop: '0.5rem' };
+  const CardTextStyles = { marginLeft: '20px', marginRight: '2rem' };
 
   return (
     <Page title="Prepare For Optimization">
@@ -31,44 +43,92 @@ const PrepareForOptimizationPage = () => {
           <Card style={{ boxShadow: '3px 3px 8px 2px #D1D1D1' }}>
             <CardBody>
               <Row>
-                <CardText
-                  className="mt-3"
-                  style={{ marginLeft: '20px', marginRight: '10px' }}
-                >
+                <CardText className="mt-3" style={CardTextStyles}>
                   Select Optimizations to Run:{' '}
                 </CardText>
-                <ButtonGroup className="mr-3 mb-3">
-                  <Button color="lightgrey">Purchase Price</Button>
-                  <Button color="lightgrey">Price + Fuel</Button>
-                </ButtonGroup>
+                <FormControl component="fieldset">
+                  <RadioGroup
+                    row
+                    aria-label="position"
+                    name="position"
+                    // defaultValue="top"
+                  >
+                    <FormControlLabel
+                      style={RadioBtnStyles}
+                      value="Purchase Price"
+                      control={<Radio color="primary" />}
+                      label="Purchase Price"
+                    />{' '}
+                    <FormControlLabel
+                      style={RadioBtnStyles}
+                      value="Purchase Price + Fuel"
+                      control={<Radio color="primary" />}
+                      label="Purchase Price + Fuel"
+                    />
+                  </RadioGroup>
+                </FormControl>
               </Row>
 
               <Row>
-                <CardText
-                  className="mt-3"
-                  style={{ marginLeft: '20px', marginRight: '10px' }}
-                >
+                <CardText className="mt-3" style={CardTextStyles}>
                   Select CO2 Step Size:{' '}
                 </CardText>
-                <ButtonGroup className="mr-3 mb-3">
-                  <Button color="lightgrey">1.0%</Button>
-                  <Button color="lightgrey">0.5%</Button>
-                  <Button color="lightgrey">0.1%</Button>
-                </ButtonGroup>
+                <FormControl component="fieldset">
+                  <RadioGroup
+                    row
+                    aria-label="position"
+                    name="position"
+                    // defaultValue="top"
+                  >
+                    <FormControlLabel
+                      style={RadioBtnStyles}
+                      value="one percent"
+                      control={<Radio color="primary" />}
+                      label="1.0%"
+                    />
+                    <FormControlLabel
+                      style={RadioBtnStyles}
+                      value="point five percent"
+                      control={<Radio color="primary" />}
+                      label="0.5%"
+                    />{' '}
+                    <FormControlLabel
+                      style={RadioBtnStyles}
+                      value="point one percent"
+                      control={<Radio color="primary" />}
+                      label="0.1%"
+                    />
+                  </RadioGroup>
+                </FormControl>
               </Row>
 
               <Row>
-                <CardText
-                  className="mt-3"
-                  style={{ marginLeft: '20px', marginRight: '10px' }}
-                >
+                <CardText className="mt-3" style={CardTextStyles}>
                   Select Optimality Tolerance:{' '}
                 </CardText>
-                <ButtonGroup className="mr-3 mb-3">
-                  <Button color="lightgrey">1.0%</Button>
-                  <Button color="lightgrey">0.1%</Button>
-                </ButtonGroup>
+                <FormControl component="fieldset">
+                  <RadioGroup
+                    row
+                    aria-label="position"
+                    name="position"
+                    // defaultValue="top"
+                  >
+                    <FormControlLabel
+                      style={RadioBtnStyles}
+                      value="one percent olerance"
+                      control={<Radio color="primary" />}
+                      label="1.0%"
+                    />{' '}
+                    <FormControlLabel
+                      style={RadioBtnStyles}
+                      value="point one percent olerance"
+                      control={<Radio color="primary" />}
+                      label="0.1%"
+                    />
+                  </RadioGroup>
+                </FormControl>
               </Row>
+
               <Form>
                 <Button
                   color="theme"
