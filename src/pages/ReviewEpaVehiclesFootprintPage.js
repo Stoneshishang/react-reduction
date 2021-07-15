@@ -176,29 +176,32 @@ const ReviewEpaVehiclesFootprintPage = () => {
                     </tr>
                   </tbody>
                 </TableB>
-
-                <Button
-                  style={{ marginTop: '2rem' }}
-                  color="theme"
-                  size="lg"
-                  onClick={() => {
-                    history.push('/SelectSaleVehiclesForPurchase');
-                  }}
+                <RowB
+                  style={{ justifyContent: 'space-between', display: 'flex' }}
                 >
-                  Select Replacement Vehicles
-                </Button>
-                <FormControlLabel
-                  style={{ marginLeft: '50rem', marginTop: '2rem' }}
-                  control={
-                    <Switch
-                      checked={open}
-                      onChange={() => setOpen(!open)}
-                      name="checkedB"
-                      color="primary"
-                    />
-                  }
-                  label="Display Detailed Vehicle Info"
-                />
+                  <Button
+                    style={{ marginLeft: '1rem', marginTop: '2rem' }}
+                    color="theme"
+                    size="lg"
+                    onClick={() => {
+                      history.push('/SelectSaleVehiclesForPurchase');
+                    }}
+                  >
+                    Select Replacement Vehicles
+                  </Button>
+                  <FormControlLabel
+                    style={{ marginTop: '2rem', marginRight: '2rem' }}
+                    control={
+                      <Switch
+                        checked={open}
+                        onChange={() => setOpen(!open)}
+                        name="checkedB"
+                        color="primary"
+                      />
+                    }
+                    label="Display Detailed Vehicle Info"
+                  />
+                </RowB>
               </Form>
             </CardBody>
           </Card>

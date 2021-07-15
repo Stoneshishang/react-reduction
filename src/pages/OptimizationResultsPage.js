@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { getColor } from 'utils/colors';
 import { randomNum } from 'utils/demos';
-
+import { MdClose } from 'react-icons/md';
 import { Row, Col, Card, CardHeader, CardBody } from 'reactstrap';
 
 import { Line, Pie, Doughnut, Bar, Radar, Polar } from 'react-chartjs-2';
@@ -51,7 +51,7 @@ const genLineData = (moreData = {}, moreData2 = {}, moreData3 = {}) => {
         ...moreData,
       },
       {
-        label: 'Fuel Price',
+        label: 'Fuel Cost',
         backgroundColor: getColor('secondary'),
         pointHoverBackgroundColor: 'rgba(252,92,125,1)',
         pointRadius: 2.3,
@@ -132,52 +132,114 @@ const stackedBarData = () => {
   };
 };
 
-const genPieData = () => {
-  return {
-    datasets: [
-      {
-        data: [randomNum(), randomNum(), randomNum(), randomNum(), randomNum()],
-        backgroundColor: [
-          getColor('primary'),
-          getColor('secondary'),
-          getColor('success'),
-          getColor('info'),
-          getColor('danger'),
-        ],
-        label: 'Dataset 1',
-      },
-    ],
-    labels: ['Data 1', 'Data 2', 'Data 3', 'Data 4', 'Data 5'],
-  };
-};
-
-const renderPieChart = () => {
-  console.log('====================================');
-  console.log('Onclick on Bar Chart executed');
-  console.log('====================================');
-
-  return (
-    <div>
-      <h1>Pie Chart</h1>
-    </div>
-  );
-};
+// const [pieChartData, setPieChartData] = useState()
 
 const OptimizationResultsPage = () => {
+  const [pieChartData, setPieChartData] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+
+  console.log(
+    '==============pieChartData at the begining======================',
+  );
+  console.log(pieChartData);
+  console.log('====================================');
+
+  const fetchOnClickedBarData = (c, i) => {
+    const e = i[0];
+    console.log('==================e._index==================');
+    console.log(e);
+    // console.log(e._index);
+    if (e !== undefined) {
+      const clickedBarIndex = e._index;
+      // console.log(e._view.label);
+
+      const barsData = stackedBarData();
+
+      let clickedBarData = '';
+      let labelsData = [
+        '2021 Escape AWD HEV 2.5 L (43, 37)',
+        '2021 Escape FWD 1.5 L (28, 34)',
+        '2021 Escape FWD HEV 2.5 L (44, 37)',
+        '2021 Mustang Mach-E AWD (100, 86)',
+        '2021 Mustang Mach-E RWD (105, 93)',
+      ];
+      let backgroundColor = [
+        getColor('primary'),
+        getColor('secondary'),
+        getColor('info'),
+        getColor('success'),
+        getColor('danger'),
+      ];
+      let hoverBackgroundColor = [
+        'rgba(106, 130, 221, 0.7)',
+        'rgba(252,92,125,0.7)',
+        'rgba(0,201,255,0.7)',
+        'rgba(69,182,73,0.7)',
+        'rgba(248,80,50, 0.7)',
+      ];
+
+      clickedBarData += barsData.datasets.map(x => x.data[clickedBarIndex]);
+
+      let clickedBarDataArr = clickedBarData.split(',').map(Number);
+
+      console.log('==================clickedBarData==================');
+      console.log(clickedBarDataArr);
+      console.log(typeof clickedBarDataArr);
+      console.log('====================================');
+
+      const pieData = {
+        labels: labelsData,
+        datasets: [
+          {
+            label: 'Selected CO2 Reduction Pie Chart',
+            data: clickedBarDataArr,
+            backgroundColor: backgroundColor,
+            hoverBackgroundColor: hoverBackgroundColor,
+            borderColor: 'white',
+            borderWidth: 1,
+          },
+        ],
+      };
+
+      setIsOpen(true);
+      setPieChartData(pieData);
+      console.log('================pieChartData====================');
+      console.log(pieChartData);
+      // console.log(pieChartData);
+      console.log('====================================');
+    }
+  };
+
+  const renderPieChart = data => {
+    return (
+      <Col xl={10} lg={12} md={12}>
+        <Card
+          style={{ marginTop: '2rem', boxShadow: '3px 3px 8px 2px #e0e0e0' }}
+        >
+          <CardHeader
+            style={{ justifyContent: 'space-between', display: 'flex' }}
+          >
+            Pie Chart
+            <MdClose
+              onClick={() => {
+                setIsOpen(false);
+              }}
+              // style={{ marginLeft: '5rem' }}
+            />
+          </CardHeader>
+          <CardBody>
+            <Pie data={data} />
+          </CardBody>
+        </Card>
+      </Col>
+    );
+  };
+
   return (
     <Page title="Charts">
       <Row>
-        {/* <Col xl={6} lg={12} md={12}>
-          <Card>
-            <CardHeader>Bar</CardHeader>
-            <CardBody>
-              <Bar data={genLineData()} />
-            </CardBody>
-          </Card>
-        </Col> */}
-
         <Col xl={10} lg={12} md={12}>
-          <Card>
+          <Card style={{ boxShadow: '3px 3px 8px 2px #e0e0e0' }}>
             <CardHeader>Line</CardHeader>
             <CardBody>
               <Line
@@ -215,13 +277,17 @@ const OptimizationResultsPage = () => {
 
       <Row>
         <Col xl={10} lg={12} md={12}>
-          <Card>
+          <Card style={{ boxShadow: '3px 3px 8px 2px #e0e0e0' }}>
             <CardHeader>Stacked Bar</CardHeader>
             <CardBody>
               <Bar
                 data={stackedBarData}
                 options={{
-                  onClick: renderPieChart,
+                  onClick: fetchOnClickedBarData,
+                  tooltips: {
+                    mode: 'index',
+                    axis: 'y',
+                  },
                   legend: { position: 'right' },
                   scales: {
                     xAxes: [
@@ -245,58 +311,12 @@ const OptimizationResultsPage = () => {
                   },
                 }}
               />
-            </CardBody>
-          </Card>
-        </Col>
-
-        {/* <Col xl={6} lg={12} md={12}>
-          <Card>
-            <CardHeader>Combo Bar / Line</CardHeader>
-            <CardBody>
-              <Bar data={genLineData({ type: 'line', fill: false })} />
-            </CardBody>
-          </Card>
-        </Col> */}
-      </Row>
-      {/* <Row>
-        <Col xl={6} lg={12} md={12}>
-          <Card>
-            <CardHeader>Pie</CardHeader>
-            <CardBody>
-              <Pie data={genPieData()} />
-            </CardBody>
-          </Card>
-        </Col>
-
-        <Col xl={6} lg={12} md={12}>
-          <Card>
-            <CardHeader>Doughnut</CardHeader>
-            <CardBody>
-              <Doughnut data={genPieData()} />
+              {(pieChartData !== null) & (isOpen === true) &&
+                renderPieChart(pieChartData)}
             </CardBody>
           </Card>
         </Col>
       </Row>
-
-      <Row>
-        <Col xl={6} lg={12} md={12}>
-          <Card>
-            <CardHeader>Polar</CardHeader>
-            <CardBody>
-              <Polar data={genPieData()} />
-            </CardBody>
-          </Card>
-        </Col>
-
-        <Col xl={6} lg={12} md={12}>
-          <Card>
-            <CardHeader>Radar</CardHeader>
-            <CardBody>
-              <Radar data={genLineData()} />
-            </CardBody>
-          </Card>
-        </Col>
-      </Row> */}
     </Page>
   );
 };

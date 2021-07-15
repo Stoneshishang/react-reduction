@@ -27,16 +27,22 @@ const DecodedVINsPage = () => {
     <Page title="Decoded VINs">
       <Row>
         <Col xl={12} lg={12} md={12}>
-          <Card style={{ boxShadow: '3px 3px 8px 2px #D1D1D1' }}>
+          <Card
+            style={{
+              boxShadow: '3px 3px 8px 2px #D1D1D1',
+            }}
+          >
             <CardBody>
               <Form>
-                <Row>
+                <Row
+                  style={{ justifyContent: 'space-between', display: 'flex' }}
+                >
                   <h5 style={{ display: 'inline-block', marginLeft: '1rem' }}>
                     Review below {enteredFleetData.length - 1} decoded VINs
                     table
                   </h5>
                   <Button
-                    style={{ marginLeft: '47rem', marginBottom: '1rem' }}
+                    style={{ marginRight: '1rem', marginBottom: '1rem' }}
                     color="theme"
                     size="lg"
                     onClick={() => history.push('/ReviewEpaMatches')}

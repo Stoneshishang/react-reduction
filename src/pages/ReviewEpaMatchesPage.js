@@ -31,13 +31,15 @@ const ReviewEpaMatchesPage = () => {
           <Card style={{ boxShadow: '3px 3px 8px 2px #D1D1D1' }}>
             <CardBody>
               <Form>
-                <Row>
+                <Row
+                  style={{ justifyContent: 'space-between', display: 'flex' }}
+                >
                   <h5 style={{ display: 'inline-block', marginLeft: '1rem' }}>
                     Review below {enteredFleetData.length - 1} vehicles with EPA
                     matches
                   </h5>
                   <Button
-                    style={{ marginLeft: '44rem', marginBottom: '1rem' }}
+                    style={{ marginBottom: '1rem', marginRight: '1rem' }}
                     color="theme"
                     size="lg"
                     onClick={() => history.push('/SelectBestEPAMatch')}
