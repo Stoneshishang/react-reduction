@@ -23,6 +23,11 @@ import {
 
 const EnterFleetInfoPage = () => {
   const { enteredFleetData, setEnteredFleetData } = useContext(Context);
+  const { currentURL, setCurrentURL } = useContext(Context);
+
+  setCurrentURL(window.location.pathname);
+
+  // console.log(currentURL);
 
   const handleOnDrop = data => {
     // console.log('------------handleOnDrop---------------');
