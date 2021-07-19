@@ -1,5 +1,6 @@
 import Page from 'components/Page';
-import React from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../ContextState';
 import { useHistory } from 'react-router-dom';
 import { FinancialInfoAndBondsTable } from '../components/UpdateFinanicalInfoAndSetBondsTable';
 import { readString } from 'react-papaparse';
@@ -17,6 +18,8 @@ import {
 } from 'reactstrap';
 
 const UpdateFinanicalInfoAndSetBondsPage = () => {
+  const { setCurrentURL } = useContext(Context);
+  setCurrentURL(window.location.pathname);
   const history = useHistory();
   const saleVehicleMpg = readString(SaleVehicleData);
   const { data } = saleVehicleMpg;

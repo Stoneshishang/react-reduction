@@ -7,7 +7,7 @@ import React from 'react';
 import componentQueries from 'react-component-queries';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
-import { CsvDataProvider } from './ContextState';
+import { GloabalContextProvider } from './ContextState';
 
 const AlertPage = React.lazy(() => import('pages/AlertPage'));
 const AuthModalPage = React.lazy(() => import('pages/AuthModalPage'));
@@ -66,32 +66,33 @@ const getBasename = () => {
 class App extends React.Component {
   render() {
     return (
-      <BrowserRouter basename={getBasename()}>
-        <GAListener>
-          <Switch>
-            <LayoutRoute
-              exact
-              path="/login"
-              layout={EmptyLayout}
-              component={props => (
-                <AuthPage {...props} authState={STATE_LOGIN} />
-              )}
-            />
-            <LayoutRoute
-              exact
-              path="/signup"
-              layout={EmptyLayout}
-              component={props => (
-                <AuthPage {...props} authState={STATE_SIGNUP} />
-              )}
-            />
+      <GloabalContextProvider>
+        <BrowserRouter basename={getBasename()}>
+          <GAListener>
+            <Switch>
+              <LayoutRoute
+                exact
+                path="/login"
+                layout={EmptyLayout}
+                component={props => (
+                  <AuthPage {...props} authState={STATE_LOGIN} />
+                )}
+              />
+              <LayoutRoute
+                exact
+                path="/signup"
+                layout={EmptyLayout}
+                component={props => (
+                  <AuthPage {...props} authState={STATE_SIGNUP} />
+                )}
+              />
 
-            <MainLayout breakpoint={this.props.breakpoint}>
-              <React.Suspense fallback={<PageSpinner />}>
-                <Route exact path="/login-modal" component={AuthModalPage} />
+              <MainLayout breakpoint={this.props.breakpoint}>
+                <React.Suspense fallback={<PageSpinner />}>
+                  <Route exact path="/login-modal" component={AuthModalPage} />
 
-                <Route exact path="/" component={HomePage} />
-                <CsvDataProvider>
+                  <Route exact path="/" component={HomePage} />
+
                   <Route
                     exact
                     path="/EnterFleetInfo"
@@ -142,24 +143,24 @@ class App extends React.Component {
                     path="/UpdateFinanicalInfoAndSetBonds"
                     component={UpdateFinanicalInfoAndSetBondsPage}
                   />
-                </CsvDataProvider>
 
-                <Route
-                  exact
-                  path="/PrepareForOptimization"
-                  component={PrepareForOptimizationPage}
-                />
-                <Route
-                  exact
-                  path="/OptimizationResults"
-                  component={OptimizationResultsPage}
-                />
-              </React.Suspense>
-            </MainLayout>
-            <Redirect to="/" />
-          </Switch>
-        </GAListener>
-      </BrowserRouter>
+                  <Route
+                    exact
+                    path="/PrepareForOptimization"
+                    component={PrepareForOptimizationPage}
+                  />
+                  <Route
+                    exact
+                    path="/OptimizationResults"
+                    component={OptimizationResultsPage}
+                  />
+                </React.Suspense>
+              </MainLayout>
+              <Redirect to="/" />
+            </Switch>
+          </GAListener>
+        </BrowserRouter>
+      </GloabalContextProvider>
     );
   }
 }

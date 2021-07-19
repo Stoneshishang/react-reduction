@@ -23,6 +23,9 @@ const DecodedVINsPage = () => {
   const { enteredFleetData } = useContext(Context);
   const history = useHistory();
 
+  const { setCurrentURL } = useContext(Context);
+  setCurrentURL(window.location.pathname);
+
   return (
     <Page title="Decoded VINs">
       <Row>

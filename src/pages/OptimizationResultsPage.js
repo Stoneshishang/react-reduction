@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { Context } from '../ContextState';
 
 import { getColor } from 'utils/colors';
 import { randomNum } from 'utils/demos';
@@ -135,6 +136,8 @@ const stackedBarData = () => {
 // const [pieChartData, setPieChartData] = useState()
 
 const OptimizationResultsPage = () => {
+  const { setCurrentURL } = useContext(Context);
+  setCurrentURL(window.location.pathname);
   const [pieChartData, setPieChartData] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 

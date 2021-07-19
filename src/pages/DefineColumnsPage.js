@@ -24,9 +24,9 @@ import {
 const DefineColumnsPage = () => {
   const { enteredFleetData } = useContext(Context);
   const history = useHistory();
-  // console.log('==================DefineColumnPage==================');
-  // console.log(enteredFleetData);
-  // console.log('====================================');
+
+  const { setCurrentURL } = useContext(Context);
+  setCurrentURL(window.location.pathname);
 
   return (
     <Page title="Define Columns">

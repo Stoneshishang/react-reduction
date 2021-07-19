@@ -1,6 +1,7 @@
 import Page from 'components/Page';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Context } from '../ContextState';
 import { CsvToHtmlTable } from 'react-csv-to-table';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
@@ -129,7 +130,8 @@ Row.propTypes = {
 
 const ReviewEpaVehiclesFootprintPage = () => {
   const [open, setOpen] = React.useState(false);
-
+  const { setCurrentURL } = useContext(Context);
+  setCurrentURL(window.location.pathname);
   const history = useHistory();
 
   const handleChange = event => {
@@ -150,14 +152,13 @@ const ReviewEpaVehiclesFootprintPage = () => {
                       backgroundColor: '#cfcfcf',
                     }}
                   >
-                    {' '}
                     <tr>
-                      <th colspan="4">Annual Totals</th>
+                      <th colSpan="4">Annual Totals</th>
                     </tr>
                     <tr>
-                      <th colspan="2">EPA MPG</th>
+                      <th colSpan="2">EPA MPG</th>
 
-                      <th colspan="2">User MPG</th>
+                      <th colSpan="2">User MPG</th>
                     </tr>
                     <tr>
                       <th>Fuel Cost</th>
@@ -206,7 +207,7 @@ const ReviewEpaVehiclesFootprintPage = () => {
             </CardBody>
           </Card>
 
-          {open == true && (
+          {open === true && (
             <Card
               style={{
                 boxShadow: '3px 3px 8px 2px #e0e0e0',
@@ -214,24 +215,22 @@ const ReviewEpaVehiclesFootprintPage = () => {
               }}
             >
               <CardBody>
-                <TableRow>
-                  <TableCell
-                    style={{
-                      paddingBottom: 0,
-                      paddingTop: 0,
-                      justifyContent: 'center',
-                    }}
-                    colSpan={12}
-                  >
-                    <Collapse in={open} timeout="auto" unmountOnExit>
-                      <CsvToHtmlTable
-                        data={EpaVehicleFootprintDemoData}
-                        csvDelimiter=","
-                        tableClassName="table table-striped table-hover"
-                      />
-                    </Collapse>
-                  </TableCell>
-                </TableRow>
+                <TableCell
+                  style={{
+                    paddingBottom: 0,
+                    paddingTop: 0,
+                    justifyContent: 'center',
+                  }}
+                  colSpan={12}
+                >
+                  <Collapse in={open} timeout="auto" unmountOnExit>
+                    <CsvToHtmlTable
+                      data={EpaVehicleFootprintDemoData}
+                      csvDelimiter=","
+                      tableClassName="table table-striped table-hover"
+                    />
+                  </Collapse>
+                </TableCell>
               </CardBody>
             </Card>
           )}

@@ -1,7 +1,8 @@
 import Page from 'components/Page';
 
 import { getColor } from 'utils/colors';
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../ContextState';
 import { useHistory } from 'react-router-dom';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
@@ -31,6 +32,8 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
 const PrepareForOptimizationPage = () => {
+  const { setCurrentURL } = useContext(Context);
+  setCurrentURL(window.location.pathname);
   const history = useHistory();
 
   const RadioBtnStyles = { marginRight: '2rem', marginTop: '0.5rem' };

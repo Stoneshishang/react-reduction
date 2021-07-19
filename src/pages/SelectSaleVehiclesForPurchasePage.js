@@ -1,5 +1,6 @@
 import Page from 'components/Page';
-import React from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../ContextState';
 import { useHistory } from 'react-router-dom';
 import { SelectSaleVehicleTable } from '../components/SelectSaleVehicleTable';
 import { readString } from 'react-papaparse';
@@ -24,41 +25,11 @@ import {
 
 const SelectSaleVehiclesForPurchasePage = () => {
   const history = useHistory();
-  //   const str = `Sale Vehicle Model,MPG City,MPG Highway
-  // 2021 Escape Hybrid 2.5L,44,37
-  // 2020 Exploreer Limited Hybrid 3.3L,21,28
-  // 2022 F150 Lightning ,85,50
-  // 2022 E Transit,61,66`;
+  const { setCurrentURL } = useContext(Context);
+  setCurrentURL(window.location.pathname);
 
   const saleVehicleMpg = readString(SaleVehicleData);
   const { data } = saleVehicleMpg;
-  console.log('=================saleVehicleMpg===================');
-  console.log(data);
-  console.log('====================================');
-
-  // const columns = [
-  //   { field: 'saleVehicleModel', headerName: 'Sale Vehicle Model', width: 150 },
-  //   { field: 'mpgCity', headerName: 'Mpg City', width: 90 },
-  //   { field: 'mpgHighway', headerName: 'Mpg Highway', width: 90 },
-  // ];
-
-  // const rows = [
-  //   {
-  //     saleVehicleModel: '2021 Escape Hybrid 2.5L',
-  //     mpgCity: '44',
-  //     mpgHighway: '37',
-  //   },
-  //   {
-  //     saleVehicleModel: '2020 Exploreer Limited Hybrid 3.3L',
-  //     mpgCity: '21',
-  //     mpgHighway: '28',
-  //   },
-  //   {
-  //     saleVehicleModel: '2022 E Transit',
-  //     mpgCity: '61',
-  //     mpgHighway: '66',
-  //   },
-  // ];
 
   return (
     <Page title="Select Sale Vehicles For Purchase">

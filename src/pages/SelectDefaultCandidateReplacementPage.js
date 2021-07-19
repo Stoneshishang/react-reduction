@@ -1,5 +1,6 @@
 import Page from 'components/Page';
-import React from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../ContextState';
 import { useHistory } from 'react-router-dom';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
@@ -21,6 +22,8 @@ import {
 } from 'reactstrap';
 
 const SelectDefaultCandidateReplacementPage = () => {
+  const { setCurrentURL } = useContext(Context);
+  setCurrentURL(window.location.pathname);
   const history = useHistory();
   const animatedComponents = makeAnimated();
   const saleVehicleList = [
