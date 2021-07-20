@@ -1,24 +1,18 @@
 import { useHistory } from 'react-router-dom';
 import fordFleet from 'assets/img/fpp-homepage/ford-fleet.PNG';
 
-import { UserCard } from 'components/Card';
 import Page from 'components/Page';
-import { bgCards, gradientCards, overlayCards } from 'demos/cardPage';
-import { getStackLineChart, stackLineChartOptions } from 'demos/chartjs';
+
 import React from 'react';
-import { Line } from 'react-chartjs-2';
+
 import {
   Button,
   Card,
   CardBody,
   CardImg,
-  CardImgOverlay,
-  CardLink,
   CardText,
   CardTitle,
   Col,
-  ListGroup,
-  ListGroupItem,
   Row,
 } from 'reactstrap';
 

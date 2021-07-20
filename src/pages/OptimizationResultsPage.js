@@ -2,11 +2,11 @@ import React, { useContext, useState } from 'react';
 import { Context } from '../ContextState';
 
 import { getColor } from 'utils/colors';
-import { randomNum } from 'utils/demos';
+
 import { MdClose } from 'react-icons/md';
 import { Row, Col, Card, CardHeader, CardBody } from 'reactstrap';
 
-import { Line, Pie, Doughnut, Bar, Radar, Polar } from 'react-chartjs-2';
+import { Line, Pie, Bar } from 'react-chartjs-2';
 import 'chartjs-plugin-style';
 import Page from 'components/Page';
 
@@ -133,8 +133,6 @@ const stackedBarData = () => {
   };
 };
 
-// const [pieChartData, setPieChartData] = useState()
-
 const OptimizationResultsPage = () => {
   const { setCurrentURL } = useContext(Context);
   setCurrentURL(window.location.pathname);
@@ -151,10 +149,9 @@ const OptimizationResultsPage = () => {
     const e = i[0];
     console.log('==================e._index==================');
     console.log(e);
-    // console.log(e._index);
+
     if (e !== undefined) {
       const clickedBarIndex = e._index;
-      // console.log(e._view.label);
 
       const barsData = stackedBarData();
 
@@ -208,7 +205,7 @@ const OptimizationResultsPage = () => {
       setPieChartData(pieData);
       console.log('================pieChartData====================');
       console.log(pieChartData);
-      // console.log(pieChartData);
+
       console.log('====================================');
     }
   };
@@ -227,7 +224,6 @@ const OptimizationResultsPage = () => {
               onClick={() => {
                 setIsOpen(false);
               }}
-              // style={{ marginLeft: '5rem' }}
             />
           </CardHeader>
           <CardBody>

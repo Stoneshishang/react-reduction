@@ -5,17 +5,8 @@ import { useHistory } from 'react-router-dom';
 import { FinancialInfoAndBondsTable } from '../components/UpdateFinanicalInfoAndSetBondsTable';
 import { readString } from 'react-papaparse';
 import SaleVehicleData from '../demos/SaleVehicleData';
-import CurrencyInputField from 'react-currency-input-field';
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  Col,
-  Form,
-  Table,
-  Row,
-} from 'reactstrap';
+
+import { Button, Card, CardBody, Col, Form, Table, Row } from 'reactstrap';
 
 const UpdateFinanicalInfoAndSetBondsPage = () => {
   const { setCurrentURL } = useContext(Context);

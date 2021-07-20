@@ -1,5 +1,5 @@
 import Page from 'components/Page';
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { CSVReader } from 'react-papaparse';
 import { Context } from '../ContextState';
@@ -9,12 +9,9 @@ import {
   Button,
   Card,
   CardBody,
-  CardHeader,
   Col,
   Form,
-  FormFeedback,
   FormGroup,
-  FormText,
   Input,
   Label,
   Row,
@@ -46,9 +43,6 @@ const EnterFleetInfoPage = () => {
 
   const history = useHistory();
 
-  // console.log('============ContextState========================');
-  // console.log(enteredFleetData);
-
   return (
     <Page title="Enter Fleet Info">
       <Row>
@@ -75,7 +69,6 @@ const EnterFleetInfoPage = () => {
                         Enter Default Gas Price
                       </Label>
 
-                      {/* <Input id="default-gas-price" placeholder="USD" />*/}
                       <CurrencyInputField
                         placeholder="USD"
                         prefix="$"
@@ -184,9 +177,7 @@ const EnterFleetInfoPage = () => {
                             backgroundColor: 'green',
                           },
                         }}
-                      >
-                        {/* <span>Drop CSV file here or click to upload.</span> */}
-                      </CSVReader>
+                      ></CSVReader>
                     </FormGroup>
                   </Col>
                 </Row>

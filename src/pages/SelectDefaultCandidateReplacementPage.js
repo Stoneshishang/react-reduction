@@ -5,21 +5,7 @@ import { useHistory } from 'react-router-dom';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 
-import CurrencyInputField from 'react-currency-input-field';
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  Col,
-  Form,
-  FormFeedback,
-  FormGroup,
-  FormText,
-  Input,
-  Label,
-  Row,
-} from 'reactstrap';
+import { Button, Card, CardBody, Col, Form, Row } from 'reactstrap';
 
 const SelectDefaultCandidateReplacementPage = () => {
   const { setCurrentURL } = useContext(Context);

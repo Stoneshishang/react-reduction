@@ -3,22 +3,8 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Context } from '../ContextState';
 import { RenderTable } from '../components/FleetInfoInputTable';
-import CurrencyInputField from 'react-currency-input-field';
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  Col,
-  Form,
-  FormFeedback,
-  FormGroup,
-  FormText,
-  Input,
-  Label,
-  Row,
-  Table,
-} from 'reactstrap';
+
+import { Button, Card, CardBody, Col, Form, Row, Table } from 'reactstrap';
 
 const ReviewEpaMatchesPage = () => {
   const { enteredFleetData } = useContext(Context);

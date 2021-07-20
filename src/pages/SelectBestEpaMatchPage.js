@@ -2,17 +2,14 @@ import Page from 'components/Page';
 import React, { useContext } from 'react';
 import { Context } from '../ContextState';
 import { useHistory } from 'react-router-dom';
-import CurrencyInputField from 'react-currency-input-field';
+
 import {
   Button,
   Card,
   CardBody,
-  CardHeader,
   Col,
   Form,
-  FormFeedback,
   FormGroup,
-  FormText,
   Input,
   Label,
   Row,

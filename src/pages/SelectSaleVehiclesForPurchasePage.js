@@ -5,23 +5,8 @@ import { useHistory } from 'react-router-dom';
 import { SelectSaleVehicleTable } from '../components/SelectSaleVehicleTable';
 import { readString } from 'react-papaparse';
 import SaleVehicleData from '../demos/SaleVehicleData';
-// import { DataGrid } from '@material-ui/data-grid';
-import CurrencyInputField from 'react-currency-input-field';
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  Col,
-  Form,
-  FormFeedback,
-  FormGroup,
-  FormText,
-  Input,
-  Label,
-  Row,
-  Table,
-} from 'reactstrap';
+
+import { Button, Card, CardBody, Col, Form, Row, Table } from 'reactstrap';
 
 const SelectSaleVehiclesForPurchasePage = () => {
   const history = useHistory();
@@ -47,12 +32,7 @@ const SelectSaleVehiclesForPurchasePage = () => {
                     );
                   })}
                 </Table>
-                {/* <DataGrid
-                  rows={rows}
-                  columns={columns}
-                  pageSize={5}
-                  checkboxSelection
-                /> */}
+
                 <Button
                   color="theme"
                   size="lg"

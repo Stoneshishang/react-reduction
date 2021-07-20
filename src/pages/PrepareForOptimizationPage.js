@@ -1,35 +1,15 @@
 import Page from 'components/Page';
 
-import { getColor } from 'utils/colors';
 import React, { useContext } from 'react';
 import { Context } from '../ContextState';
 import { useHistory } from 'react-router-dom';
-import ToggleButton from '@material-ui/lab/ToggleButton';
-import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
-import { Button as ButtonB } from 'react-bootstrap';
-import {
-  Button,
-  ButtonGroup,
-  Card,
-  CardBody,
-  CardText,
-  CardHeader,
-  Col,
-  Form,
-  FormFeedback,
-  FormGroup,
-  FormText,
-  Input,
-  Label,
-  Row,
-  Table,
-} from 'reactstrap';
+
+import { Button, Card, CardBody, CardText, Col, Form, Row } from 'reactstrap';
 
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 
 const PrepareForOptimizationPage = () => {
   const { setCurrentURL } = useContext(Context);
@@ -50,12 +30,7 @@ const PrepareForOptimizationPage = () => {
                   Select Optimizations to Run:{' '}
                 </CardText>
                 <FormControl component="fieldset">
-                  <RadioGroup
-                    row
-                    aria-label="position"
-                    name="position"
-                    // defaultValue="top"
-                  >
+                  <RadioGroup row aria-label="position" name="position">
                     <FormControlLabel
                       style={RadioBtnStyles}
                       value="Purchase Price"
@@ -77,12 +52,7 @@ const PrepareForOptimizationPage = () => {
                   Select CO2 Step Size:{' '}
                 </CardText>
                 <FormControl component="fieldset">
-                  <RadioGroup
-                    row
-                    aria-label="position"
-                    name="position"
-                    // defaultValue="top"
-                  >
+                  <RadioGroup row aria-label="position" name="position">
                     <FormControlLabel
                       style={RadioBtnStyles}
                       value="one percent"
@@ -110,12 +80,7 @@ const PrepareForOptimizationPage = () => {
                   Select Optimality Tolerance:{' '}
                 </CardText>
                 <FormControl component="fieldset">
-                  <RadioGroup
-                    row
-                    aria-label="position"
-                    name="position"
-                    // defaultValue="top"
-                  >
+                  <RadioGroup row aria-label="position" name="position">
                     <FormControlLabel
                       style={RadioBtnStyles}
                       value="one percent olerance"
