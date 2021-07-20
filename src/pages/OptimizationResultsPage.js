@@ -1,11 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { Context } from '../ContextState';
-
 import { getColor } from 'utils/colors';
-
 import { MdClose } from 'react-icons/md';
 import { Row, Col, Card, CardHeader, CardBody } from 'reactstrap';
-
 import { Line, Pie, Bar } from 'react-chartjs-2';
 import 'chartjs-plugin-style';
 import Page from 'components/Page';

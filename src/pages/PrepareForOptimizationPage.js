@@ -1,11 +1,8 @@
 import Page from 'components/Page';
-
 import React, { useContext } from 'react';
 import { Context } from '../ContextState';
 import { useHistory } from 'react-router-dom';
-
 import { Button, Card, CardBody, CardText, Col, Form, Row } from 'reactstrap';
-
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';

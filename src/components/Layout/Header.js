@@ -1,19 +1,14 @@
 import Avatar from 'components/Avatar';
 import { UserCard } from 'components/Card';
-import Notifications from 'components/Notifications';
 import SearchInput from 'components/SearchInput';
-import { notificationsData } from 'demos/header';
-import withBadge from 'hocs/withBadge';
 import React from 'react';
-import FordLogo from '../../assets/img/logo/Ford_logo_flat.svg'
+import FordLogo from '../../assets/img/logo/Ford_logo_flat.svg';
 import {
   MdClearAll,
   MdExitToApp,
   MdHelp,
   MdInsertChart,
   MdMessage,
-  MdNotificationsActive,
-  MdNotificationsNone,
   MdPersonPin,
   MdSettingsApplications,
 } from 'react-icons/md';
@@ -21,7 +16,6 @@ import {
   Button,
   ListGroup,
   ListGroupItem,
-  // NavbarToggler,
   Nav,
   Navbar,
   NavItem,
@@ -32,19 +26,6 @@ import {
 import bn from 'utils/bemnames';
 
 const bem = bn.create('header');
-
-const MdNotificationsActiveWithBadge = withBadge({
-  size: 'md',
-  color: 'primary',
-  style: {
-    top: -10,
-    right: -10,
-    display: 'inline-flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  children: <small>5</small>,
-})(MdNotificationsActive);
 
 class Header extends React.Component {
   state = {
@@ -77,12 +58,14 @@ class Header extends React.Component {
   };
 
   render() {
-    const { isNotificationConfirmed } = this.state;
-
     return (
       <Navbar light expand className={bem.b('bg-white')}>
         <Nav navbar className="mr-2">
-          <Button outline onClick={this.handleSidebarControlButton} color="theme"  >
+          <Button
+            outline
+            onClick={this.handleSidebarControlButton}
+            color="theme"
+          >
             <MdClearAll size={25} />
           </Button>
         </Nav>
@@ -91,40 +74,12 @@ class Header extends React.Component {
         </Nav>
 
         <Nav navbar className={bem.e('nav-right')}>
-          {/* <NavItem className="d-inline-flex">
-            <NavLink id="Popover1" className="position-relative">
-              {isNotificationConfirmed ? (
-                <MdNotificationsNone
-                  size={25}
-                  className="text-secondary can-click"
-                  onClick={this.toggleNotificationPopover}
-                />
-              ) : (
-                <MdNotificationsActiveWithBadge
-                  size={25}
-                  className="text-secondary can-click animated swing infinite"
-                  onClick={this.toggleNotificationPopover}
-                />
-              )}
-            </NavLink>
-            <Popover
-              placement="bottom"
-              isOpen={this.state.isOpenNotificationPopover}
-              toggle={this.toggleNotificationPopover}
-              target="Popover1"
-            >
-              <PopoverBody>
-                <Notifications notificationsData={notificationsData} />
-              </PopoverBody>
-            </Popover>
-          </NavItem> */}
-
           <NavItem>
             <NavLink id="Popover2">
               <Avatar
                 onClick={this.toggleUserCardPopover}
                 className="can-click"
-                style={{marginRight: "10px"}}
+                style={{ marginRight: '10px' }}
               />
             </NavLink>
             <Popover
@@ -166,7 +121,7 @@ class Header extends React.Component {
               </PopoverBody>
             </Popover>
           </NavItem>
-          <img src={FordLogo} className='ford-logo' alt='ford logo' />
+          <img src={FordLogo} className="ford-logo" alt="ford logo" />
         </Nav>
       </Navbar>
     );

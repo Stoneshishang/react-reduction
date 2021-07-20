@@ -9,18 +9,13 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import './styles/reduction.scss';
 import { GloabalContextProvider } from './ContextState';
 
-const AlertPage = React.lazy(() => import('pages/AlertPage'));
 const AuthModalPage = React.lazy(() => import('pages/AuthModalPage'));
-const BadgePage = React.lazy(() => import('pages/BadgePage'));
-const ButtonGroupPage = React.lazy(() => import('pages/ButtonGroupPage'));
-const ButtonPage = React.lazy(() => import('pages/ButtonPage'));
+
 const HomePage = React.lazy(() => import('pages/HomePage'));
 
-const DashboardPage = React.lazy(() => import('pages/DashboardPage'));
-const DropdownPage = React.lazy(() => import('pages/DropdownPage'));
 const EnterFleetInfoPage = React.lazy(() => import('pages/EnterFleetInfoPage'));
 const DefineColumnsPage = React.lazy(() => import('pages/DefineColumnsPage'));
-const InputGroupPage = React.lazy(() => import('pages/InputGroupPage'));
+
 const DecodedVINsPage = React.lazy(() => import('pages/DecodedVINsPage'));
 const ReviewEpaMatchesPage = React.lazy(() =>
   import('pages/ReviewEpaMatchesPage'),
@@ -52,12 +47,6 @@ const PrepareForOptimizationPage = React.lazy(() =>
 const OptimizationResultsPage = React.lazy(() =>
   import('pages/OptimizationResultsPage'),
 );
-
-const ModalPage = React.lazy(() => import('pages/ModalPage'));
-const ProgressPage = React.lazy(() => import('pages/ProgressPage'));
-const TablePage = React.lazy(() => import('pages/TablePage'));
-const TypographyPage = React.lazy(() => import('pages/TypographyPage'));
-const WidgetPage = React.lazy(() => import('pages/WidgetPage'));
 
 const getBasename = () => {
   return `/${process.env.PUBLIC_URL.split('/').pop()}`;

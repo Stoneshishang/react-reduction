@@ -5,19 +5,13 @@ import { Context } from '../ContextState';
 import { CsvToHtmlTable } from 'react-csv-to-table';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-import CurrencyInputField from 'react-currency-input-field';
+
 import {
   Button,
   Card,
   CardBody,
-  CardHeader,
   Col,
   Form,
-  FormFeedback,
-  FormGroup,
-  FormText,
-  Input,
-  Label,
   Row as RowB,
   Table as TableB,
 } from 'reactstrap';
@@ -30,11 +24,11 @@ import IconButton from '@material-ui/core/IconButton';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
+
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
+
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
@@ -133,10 +127,6 @@ const ReviewEpaVehiclesFootprintPage = () => {
   const { setCurrentURL } = useContext(Context);
   setCurrentURL(window.location.pathname);
   const history = useHistory();
-
-  const handleChange = event => {
-    setOpen({ ...open, [event.target.name]: event.target.checked });
-  };
 
   return (
     <Page title="Review EPA Vehicle Footprint">

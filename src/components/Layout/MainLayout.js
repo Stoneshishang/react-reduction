@@ -1,10 +1,6 @@
 import { Content, Footer, Header, Sidebar } from 'components/Layout';
 import React from 'react';
-import {
-  MdImportantDevices,
-  // MdCardGiftcard,
-  MdLoyalty,
-} from 'react-icons/md';
+import { MdImportantDevices, MdLoyalty } from 'react-icons/md';
 
 class MainLayout extends React.Component {
   static isSidebarOpen() {
@@ -48,9 +44,7 @@ class MainLayout extends React.Component {
     }, 2500);
   }
 
-  // close sidebar when
   handleContentClick = event => {
-    // close sidebar if sidebar is open and screen size is less than `md`
     if (
       MainLayout.isSidebarOpen() &&
       (this.props.breakpoint === 'xs' ||

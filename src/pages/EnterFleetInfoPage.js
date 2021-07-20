@@ -25,7 +25,6 @@ const EnterFleetInfoPage = () => {
   setCurrentURL(window.location.pathname);
 
   const handleOnDrop = data => {
-    // console.log('------------handleOnDrop---------------');
     if (data !== null) {
       setEnteredFleetData(data);
     }

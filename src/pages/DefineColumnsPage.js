@@ -4,17 +4,14 @@ import { useHistory } from 'react-router-dom';
 
 import { Context } from '../ContextState';
 import { RenderTable } from '../components/FleetInfoInputTable';
-import CurrencyInputField from 'react-currency-input-field';
+
 import {
   Button,
   Card,
   CardBody,
-  CardHeader,
   Col,
   Form,
-  FormFeedback,
   FormGroup,
-  FormText,
   Input,
   Label,
   Table,

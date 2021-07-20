@@ -4,7 +4,6 @@ import { Context } from '../ContextState';
 import { useHistory } from 'react-router-dom';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-
 import { Button, Card, CardBody, Col, Form, Row } from 'reactstrap';
 
 const SelectDefaultCandidateReplacementPage = () => {

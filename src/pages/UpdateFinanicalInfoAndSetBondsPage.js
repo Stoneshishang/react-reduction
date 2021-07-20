@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 import { FinancialInfoAndBondsTable } from '../components/UpdateFinanicalInfoAndSetBondsTable';
 import { readString } from 'react-papaparse';
 import SaleVehicleData from '../demos/SaleVehicleData';
-
 import { Button, Card, CardBody, Col, Form, Table, Row } from 'reactstrap';
 
 const UpdateFinanicalInfoAndSetBondsPage = () => {

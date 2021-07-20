@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 import { SelectSaleVehicleTable } from '../components/SelectSaleVehicleTable';
 import { readString } from 'react-papaparse';
 import SaleVehicleData from '../demos/SaleVehicleData';
-
 import { Button, Card, CardBody, Col, Form, Row, Table } from 'reactstrap';
 
 const SelectSaleVehiclesForPurchasePage = () => {

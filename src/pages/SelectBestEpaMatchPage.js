@@ -2,7 +2,6 @@ import Page from 'components/Page';
 import React, { useContext } from 'react';
 import { Context } from '../ContextState';
 import { useHistory } from 'react-router-dom';
-
 import {
   Button,
   Card,
